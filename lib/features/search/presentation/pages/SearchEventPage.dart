@@ -6,23 +6,31 @@ class SearchEventPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Search"),
-          elevation: 2,
-          actions: [
-            IconButton(
-                onPressed: () {
-                  print("Search");
-                },
-                icon: const Icon(
-                  Icons.search,
-                  semanticLabel: "search",
-                ))
-          ],
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            pinned: true,
+            snap: false,
+            title: const Text("Events"),
+            bottom: AppBar(
+              title: Container(
+                width: double.infinity,
+                height: 40,
+                color: Colors.white,
+                child: const Center(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search for...',
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SliverList(
+              delegate: SliverChildListDelegate([
             Text("displayLarge",
                 style: Theme.of(context).textTheme.displayLarge),
             Text("displayMedium",
@@ -44,7 +52,9 @@ class SearchEventPage extends StatelessWidget {
             Text("labelLarge", style: Theme.of(context).textTheme.labelLarge),
             Text("labelMedium", style: Theme.of(context).textTheme.labelMedium),
             Text("labelSmall", style: Theme.of(context).textTheme.labelSmall),
-          ],
-        ));
+          ]))
+        ],
+      ),
+    );
   }
 }
