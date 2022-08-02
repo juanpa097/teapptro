@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teapptro/features/search/presentation/widgets/search_sliver_app_bar_widget.dart';
 
 class SearchEventPage extends StatelessWidget {
   const SearchEventPage({Key? key}) : super(key: key);
@@ -8,29 +9,10 @@ class SearchEventPage extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            floating: true,
-            pinned: true,
-            snap: false,
-            title: const Text("Events"),
-            bottom: AppBar(
-              title: Container(
-                width: double.infinity,
-                height: 40,
-                color: Colors.white,
-                child: const Center(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search for...',
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          const SearchSliverAppBarWidget(),
           SliverList(
               delegate: SliverChildListDelegate([
+                Chip(label: const Text("Hello")),
             Text("displayLarge",
                 style: Theme.of(context).textTheme.displayLarge),
             Text("displayMedium",

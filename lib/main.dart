@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teapptro/features/search/presentation/pages/SearchEventPage.dart';
+import 'package:teapptro/features/search/presentation/pages/search_event_page.dart';
 
 void main() {
   runApp(const TeapptroApp());
