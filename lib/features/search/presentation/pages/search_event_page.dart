@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:teapptro/features/search/presentation/widgets/events_summary_widget.dart';
+import 'package:teapptro/features/search/presentation/widgets/filter_list_widget.dart';
 import 'package:teapptro/features/search/presentation/widgets/search_sliver_app_bar_widget.dart';
 
 class SearchEventPage extends StatelessWidget {
@@ -10,9 +12,10 @@ class SearchEventPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           const SearchSliverAppBarWidget(),
+          const FilterListWidget(),
           SliverList(
               delegate: SliverChildListDelegate([
-                Chip(label: const Text("Hello")),
+                const EventSummaryWidget(),
             Text("displayLarge",
                 style: Theme.of(context).textTheme.displayLarge),
             Text("displayMedium",
@@ -34,7 +37,7 @@ class SearchEventPage extends StatelessWidget {
             Text("labelLarge", style: Theme.of(context).textTheme.labelLarge),
             Text("labelMedium", style: Theme.of(context).textTheme.labelMedium),
             Text("labelSmall", style: Theme.of(context).textTheme.labelSmall),
-          ]))
+          ])),
         ],
       ),
     );
