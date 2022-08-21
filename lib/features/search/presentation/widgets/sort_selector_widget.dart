@@ -12,7 +12,7 @@ class _SortSelectorState extends State<SortSelectorWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
+    return DropdownButton<String>( // Change to PopupMenuButton
       value: dropdownValue,
       elevation: 16,
       onChanged: (String? newValue) {
