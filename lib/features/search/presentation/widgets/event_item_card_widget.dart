@@ -51,7 +51,7 @@ class EventCardActionItems extends StatelessWidget {
     return Row(
       children: [
         IconButton(onPressed: () {}, icon: Icon(Icons.favorite, color: Theme.of(context).colorScheme.error)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.share)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
       ],
     );
   }
