@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teapptro/features/details/presentation/pages/event_details_page.dart';
 
 class EventItemCardWidget extends StatelessWidget {
   const EventItemCardWidget({Key? key}) : super(key: key);
@@ -6,14 +7,23 @@ class EventItemCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      child: InkWell(
         child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image.network('https://picsum.photos/250?image=9', width: 100),
-        const EventCardInfo(),
-        const EventCardActionItems(),
-      ],
-    ));
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.network('https://picsum.photos/250?image=9', width: 100),
+            const EventCardInfo(),
+            const EventCardActionItems(),
+          ],
+        ),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const EventDetailsPage()));
+        },
+      ),
+    );
   }
 }
 
@@ -50,7 +60,10 @@ class EventCardActionItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.favorite, color: Theme.of(context).colorScheme.error)),
+        IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.favorite,
+                color: Theme.of(context).colorScheme.error)),
         IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
       ],
     );
