@@ -24,7 +24,7 @@ class _SortSelectorState extends State<SortSelectorWidget> {
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value),
+          child: Text(value, style: Theme.of(context).textTheme.bodyText2),
         );
       }).toList(),
     );

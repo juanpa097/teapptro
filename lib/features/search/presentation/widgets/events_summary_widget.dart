@@ -8,9 +8,9 @@ class EventSummaryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Text("123 Events"),
-        SortSelectorWidget(),
+      children: [
+        Text("123 Events", style: Theme.of(context).textTheme.subtitle2),
+        const SortSelectorWidget(),
       ],
     );
   }

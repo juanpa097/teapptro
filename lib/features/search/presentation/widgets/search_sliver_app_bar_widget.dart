@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teapptro/common/presentation/spacing.dart';
 
 class SearchSliverAppBarWidget extends StatefulWidget {
   const SearchSliverAppBarWidget({Key? key}) : super(key: key);
@@ -20,13 +21,11 @@ class _SearchSliverAppBarState extends State<SearchSliverAppBarWidget> {
           title: Container(
             width: double.infinity,
             height: 40,
-            color: Colors.white,
-            child: const Center(
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search for...',
-                  prefixIcon: Icon(Icons.search),
-                ),
+            color: Theme.of(context).backgroundColor,
+            child: const TextField(
+              decoration: InputDecoration(
+                hintText: 'Search for...',
+                prefixIcon: Icon(Icons.search),
               ),
             ),
           ),
