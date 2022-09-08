@@ -16,7 +16,7 @@ class EventItemCardWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.network('https://picsum.photos/250?image=9'),
-              const EventCardInfo(),
+              const Expanded(child: EventCardInfo()),
               const EventCardActionItems(),
             ],
           ),
@@ -38,7 +38,7 @@ class EventCardInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: Spacing.s8),
+      margin: const EdgeInsets.symmetric(vertical: Spacing.s8, horizontal: Spacing.s12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +49,7 @@ class EventCardInfo extends StatelessWidget {
             children: [
               Text("Thu, Apr 19 · 20.00 Pm",
                   style: Theme.of(context).textTheme.caption),
-              Text("Of Monster and Man",
+              Text("La Rosalia",
                   style: Theme.of(context).textTheme.subtitle1)
             ],
           ),
