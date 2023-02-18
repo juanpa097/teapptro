@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.teapptro">
+    package="com.teapptro">
    <application
         android:label="teapptro"
         android:name="${applicationName}"

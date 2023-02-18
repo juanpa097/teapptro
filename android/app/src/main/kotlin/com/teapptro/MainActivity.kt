@@ -1,4 +1,4 @@
-package com.example.teapptro
+package com.teapptro
 
 import io.flutter.embedding.android.FlutterActivity
 

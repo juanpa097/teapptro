@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "817215982984",
+    "project_id": "teapptro",
+    "storage_bucket": "teapptro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817215982984:android:ec2356914e3abfe1093e3d",
+        "android_client_info": {
+          "package_name": "com.example.teapptro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817215982984-h0hjeiha16o2d8h7elkpabpgv24lpjrc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-ko7HGsEbXNnX9qKqUrMK0OQJ7RKVmII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817215982984-h0hjeiha16o2d8h7elkpabpgv24lpjrc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "817215982984-jq8anv2d3dci4ek0ufffuih2u9gegrkr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.teapptro"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817215982984:android:d9767ef7629554a4093e3d",
+        "android_client_info": {
+          "package_name": "com.teapptro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817215982984-g2d23n8sbjrq5s25j4jemilfmqegi02j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teapptro",
+            "certificate_hash": "19558665509d2a84e72170f18a0f7a83334a1bea"
+          }
+        },
+        {
+          "client_id": "817215982984-h0hjeiha16o2d8h7elkpabpgv24lpjrc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-ko7HGsEbXNnX9qKqUrMK0OQJ7RKVmII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817215982984-h0hjeiha16o2d8h7elkpabpgv24lpjrc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "817215982984-jq8anv2d3dci4ek0ufffuih2u9gegrkr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.teapptro"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
