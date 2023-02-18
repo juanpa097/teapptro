@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:teapptro/common/presentation/spacing.dart';
+import 'package:teapptro/features/search/data/datasources/events_data_source.dart';
+import 'package:teapptro/features/search/data/repositories/events_repository_impl.dart';
+
+import '../../../search/domain/repositories/events_repository.dart';
 
 class EventDetailsPage extends StatelessWidget {
   const EventDetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final EventsRepository repo =
+        EventsRepositoryImpl(dataSource: FireBaseEventsDataSource());
+
+    repo.getEvents().then(
+        (value) => debugPrint(value.fold((l) => "Error", (r) => r.toString())));
+
     final topContent = Stack(
       children: <Widget>[
         Container(
