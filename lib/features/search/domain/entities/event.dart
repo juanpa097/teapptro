@@ -1,20 +1,15 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Event extends Equatable {
-  final String name;
-  final DateTime date;
-  final String locationName;
-  final bool isFavorite;
-  final Uri imageUrl;
+part 'event.freezed.dart';
 
-  const Event({
-    required this.name,
-    required this.date,
-    required this.locationName,
-    required this.isFavorite,
-    required this.imageUrl,
-  });
+@freezed
+class Event with _$Event {
 
-  @override
-  List<Object?> get props => [name, locationName];
+  factory Event({
+    required String name,
+    required DateTime date,
+    required String locationName,
+    required bool isFavorite,
+    required Uri imageUrl,
+  }) = _Event;
 }
