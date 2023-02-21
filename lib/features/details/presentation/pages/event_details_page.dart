@@ -1,7 +1,10 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:teapptro/common/presentation/spacing.dart';
 import 'package:teapptro/features/search/data/datasources/events_data_source.dart';
 import 'package:teapptro/features/search/data/repositories/events_repository_impl.dart';
+import 'package:teapptro/features/search/domain/entities/event.dart';
 
 import '../../../search/domain/repositories/events_repository.dart';
 
@@ -10,11 +13,7 @@ class EventDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final EventsRepository repo =
-        EventsRepositoryImpl(dataSource: FireBaseEventsDataSource());
-
-    repo.getEvents().then(
-        (value) => debugPrint(value.fold((l) => "Error", (r) => r.toString())));
+    debugPrint("Events details");
 
     final topContent = Stack(
       children: <Widget>[
@@ -44,7 +43,10 @@ class EventDetailsPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [topContent, const EventInformationWidget()],
+          children: [
+            topContent,
+            EventInformationWidget(),
+          ],
         ),
       ),
     );
@@ -52,7 +54,8 @@ class EventDetailsPage extends StatelessWidget {
 }
 
 class EventInformationWidget extends StatelessWidget {
-  const EventInformationWidget({Key? key}) : super(key: key);
+  EventInformationWidget({Key? key}) : super(key: key);
+  final EventsDataSource source = FireBaseEventsDataSource();
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +65,18 @@ class EventInformationWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          StreamBuilder<Iterable<Event>>(
+            stream: source.watchAllEvents(),
+            builder: (context, snapshot) => Column(
+              children: [
+                Text(snapshot.data?.fold(
+                        "Events: \n",
+                        (previousValue, element) =>
+                            "$previousValue  ${element.name} \n") ??
+                    "No data")
+              ],
+            ),
+          ),
           Container(
               margin: const EdgeInsets.only(bottom: Spacing.s24),
               child: Text("La Rosalia",

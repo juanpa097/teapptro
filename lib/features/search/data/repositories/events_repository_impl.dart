@@ -4,17 +4,17 @@ import 'package:teapptro/features/search/data/datasources/events_data_source.dar
 import 'package:teapptro/features/search/domain/entities/event.dart';
 import 'package:teapptro/features/search/domain/repositories/events_repository.dart';
 
-class EventsRepositoryImpl extends EventsRepository {
-
-  final EventsDataSource dataSource;
-
-
-  EventsRepositoryImpl({required this.dataSource});
-
-  @override
-  Future<Either<Failure, List<Event>>> getEvents() async {
-    final events = await dataSource.fetchAllEvents();
-    return right(events);
-  }
-
-}
+// class EventsRepositoryImpl extends EventsRepository {
+//
+//   final EventsDataSource dataSource;
+//
+//
+//   EventsRepositoryImpl({required this.dataSource});
+//
+//   @override
+//   Either<Failure, Stream<Iterable<Event>>>> getEvents() async {
+//     final events = await dataSource.fetchAllEvents();
+//     return right(events);
+//   }
+//
+// }
