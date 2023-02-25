@@ -1,8 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:teapptro/features/search/domain/entities/event.dart';
-
-import '../../../../common/error/Failure.dart';
+import 'package:teapptro/features/search/domain/entities/event_failure.dart';
 
 abstract class EventsRepository {
-  Future<Either<Failure, List<Event>>> getEvents();
+  Stream<Either<EventFailure, List<Event>>> watchAll();
 }

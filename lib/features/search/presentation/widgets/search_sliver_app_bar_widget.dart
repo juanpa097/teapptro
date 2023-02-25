@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:teapptro/common/presentation/spacing.dart';
 
 class SearchSliverAppBarWidget extends StatefulWidget {
   const SearchSliverAppBarWidget({Key? key}) : super(key: key);

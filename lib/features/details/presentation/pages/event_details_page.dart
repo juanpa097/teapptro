@@ -1,10 +1,9 @@
-import 'dart:ffi';
-
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:teapptro/common/presentation/spacing.dart';
-import 'package:teapptro/features/search/data/datasources/events_data_source.dart';
 import 'package:teapptro/features/search/data/repositories/events_repository_impl.dart';
 import 'package:teapptro/features/search/domain/entities/event.dart';
+import 'package:teapptro/features/search/domain/entities/event_failure.dart';
 
 import '../../../search/domain/repositories/events_repository.dart';
 
@@ -55,7 +54,7 @@ class EventDetailsPage extends StatelessWidget {
 
 class EventInformationWidget extends StatelessWidget {
   EventInformationWidget({Key? key}) : super(key: key);
-  final EventsDataSource source = FireBaseEventsDataSource();
+  final EventsRepository source = EventsRepositoryImpl();
 
   @override
   Widget build(BuildContext context) {
@@ -65,15 +64,15 @@ class EventInformationWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          StreamBuilder<Iterable<Event>>(
-            stream: source.watchAllEvents(),
+          StreamBuilder<Either<EventFailure, List<Event>>>(
+            stream: source.watchAll(),
             builder: (context, snapshot) => Column(
               children: [
-                Text(snapshot.data?.fold(
-                        "Events: \n",
-                        (previousValue, element) =>
-                            "$previousValue  ${element.name} \n") ??
-                    "No data")
+                snapshot.data?.fold(
+                        (l) => const Text("Error"),
+                        (r) => Text(r.fold(
+                            "\n", (previousValue, element) => element.name))) ??
+                    const Text("Null")
               ],
             ),
           ),

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'event.dart';
+part of 'event_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,45 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-/// @nodoc
-mixin _$Event {
-  String get name => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
-  String get locationName => throw _privateConstructorUsedError;
-  bool get isFavorite => throw _privateConstructorUsedError;
-  Uri get imageUrl => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
+EventModel _$EventModelFromJson(Map<String, dynamic> json) {
+  return _EventModel.fromJson(json);
 }
 
 /// @nodoc
-abstract class $EventCopyWith<$Res> {
-  factory $EventCopyWith(Event value, $Res Function(Event) then) =
-      _$EventCopyWithImpl<$Res, Event>;
+mixin _$EventModel {
+  @JsonKey(ignore: true)
+  String? get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get date => throw _privateConstructorUsedError;
+  String get locationName => throw _privateConstructorUsedError;
+  String get isFavorite => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EventModelCopyWith<EventModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventModelCopyWith<$Res> {
+  factory $EventModelCopyWith(
+          EventModel value, $Res Function(EventModel) then) =
+      _$EventModelCopyWithImpl<$Res, EventModel>;
   @useResult
   $Res call(
-      {String name,
-      DateTime date,
+      {@JsonKey(ignore: true) String? id,
+      String name,
+      String date,
       String locationName,
-      bool isFavorite,
-      Uri imageUrl});
+      String isFavorite,
+      String imageUrl});
 }
 
 /// @nodoc
-class _$EventCopyWithImpl<$Res, $Val extends Event>
-    implements $EventCopyWith<$Res> {
-  _$EventCopyWithImpl(this._value, this._then);
+class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
+    implements $EventModelCopyWith<$Res> {
+  _$EventModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -52,6 +62,7 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = null,
     Object? date = null,
     Object? locationName = null,
@@ -59,6 +70,10 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -66,7 +81,7 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       locationName: null == locationName
           ? _value.locationName
           : locationName // ignore: cast_nullable_to_non_nullable
@@ -74,45 +89,55 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
+              as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
-  factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) =
-      __$$_EventCopyWithImpl<$Res>;
+abstract class _$$_EventModelCopyWith<$Res>
+    implements $EventModelCopyWith<$Res> {
+  factory _$$_EventModelCopyWith(
+          _$_EventModel value, $Res Function(_$_EventModel) then) =
+      __$$_EventModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String name,
-      DateTime date,
+      {@JsonKey(ignore: true) String? id,
+      String name,
+      String date,
       String locationName,
-      bool isFavorite,
-      Uri imageUrl});
+      String isFavorite,
+      String imageUrl});
 }
 
 /// @nodoc
-class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
-    implements _$$_EventCopyWith<$Res> {
-  __$$_EventCopyWithImpl(_$_Event _value, $Res Function(_$_Event) _then)
+class __$$_EventModelCopyWithImpl<$Res>
+    extends _$EventModelCopyWithImpl<$Res, _$_EventModel>
+    implements _$$_EventModelCopyWith<$Res> {
+  __$$_EventModelCopyWithImpl(
+      _$_EventModel _value, $Res Function(_$_EventModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = null,
     Object? date = null,
     Object? locationName = null,
     Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
-    return _then(_$_Event(
+    return _then(_$_EventModel(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -120,7 +145,7 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       locationName: null == locationName
           ? _value.locationName
           : locationName // ignore: cast_nullable_to_non_nullable
@@ -128,46 +153,56 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Event implements _Event {
-  const _$_Event(
-      {required this.name,
+@JsonSerializable(fieldRename: FieldRename.snake)
+class _$_EventModel extends _EventModel {
+  const _$_EventModel(
+      {@JsonKey(ignore: true) this.id,
+      required this.name,
       required this.date,
       required this.locationName,
       required this.isFavorite,
-      required this.imageUrl});
+      required this.imageUrl})
+      : super._();
 
+  factory _$_EventModel.fromJson(Map<String, dynamic> json) =>
+      _$$_EventModelFromJson(json);
+
+  @override
+  @JsonKey(ignore: true)
+  final String? id;
   @override
   final String name;
   @override
-  final DateTime date;
+  final String date;
   @override
   final String locationName;
   @override
-  final bool isFavorite;
+  final String isFavorite;
   @override
-  final Uri imageUrl;
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'Event(name: $name, date: $date, locationName: $locationName, isFavorite: $isFavorite, imageUrl: $imageUrl)';
+    return 'EventModel(id: $id, name: $name, date: $date, locationName: $locationName, isFavorite: $isFavorite, imageUrl: $imageUrl)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Event &&
+            other is _$_EventModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.locationName, locationName) ||
@@ -178,37 +213,53 @@ class _$_Event implements _Event {
                 other.imageUrl == imageUrl));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, date, locationName, isFavorite, imageUrl);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, date, locationName, isFavorite, imageUrl);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventCopyWith<_$_Event> get copyWith =>
-      __$$_EventCopyWithImpl<_$_Event>(this, _$identity);
+  _$$_EventModelCopyWith<_$_EventModel> get copyWith =>
+      __$$_EventModelCopyWithImpl<_$_EventModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_EventModelToJson(
+      this,
+    );
+  }
 }
 
-abstract class _Event implements Event {
-  const factory _Event(
-      {required final String name,
-      required final DateTime date,
+abstract class _EventModel extends EventModel {
+  const factory _EventModel(
+      {@JsonKey(ignore: true) final String? id,
+      required final String name,
+      required final String date,
       required final String locationName,
-      required final bool isFavorite,
-      required final Uri imageUrl}) = _$_Event;
+      required final String isFavorite,
+      required final String imageUrl}) = _$_EventModel;
+  const _EventModel._() : super._();
 
+  factory _EventModel.fromJson(Map<String, dynamic> json) =
+      _$_EventModel.fromJson;
+
+  @override
+  @JsonKey(ignore: true)
+  String? get id;
   @override
   String get name;
   @override
-  DateTime get date;
+  String get date;
   @override
   String get locationName;
   @override
-  bool get isFavorite;
+  String get isFavorite;
   @override
-  Uri get imageUrl;
+  String get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_EventCopyWith<_$_Event> get copyWith =>
+  _$$_EventModelCopyWith<_$_EventModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
