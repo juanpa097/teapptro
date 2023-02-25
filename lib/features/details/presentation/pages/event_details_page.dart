@@ -1,11 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:teapptro/common/presentation/spacing.dart';
-import 'package:teapptro/features/search/data/repositories/events_repository_impl.dart';
-import 'package:teapptro/features/search/domain/entities/event.dart';
-import 'package:teapptro/features/search/domain/entities/event_failure.dart';
-
-import '../../../search/domain/repositories/events_repository.dart';
 
 class EventDetailsPage extends StatelessWidget {
   const EventDetailsPage({Key? key}) : super(key: key);
@@ -54,7 +48,6 @@ class EventDetailsPage extends StatelessWidget {
 
 class EventInformationWidget extends StatelessWidget {
   EventInformationWidget({Key? key}) : super(key: key);
-  final EventsRepository source = EventsRepositoryImpl();
 
   @override
   Widget build(BuildContext context) {
@@ -64,18 +57,6 @@ class EventInformationWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          StreamBuilder<Either<EventFailure, List<Event>>>(
-            stream: source.watchAll(),
-            builder: (context, snapshot) => Column(
-              children: [
-                snapshot.data?.fold(
-                        (l) => const Text("Error"),
-                        (r) => Text(r.fold(
-                            "\n", (previousValue, element) => element.name))) ??
-                    const Text("Null")
-              ],
-            ),
-          ),
           Container(
               margin: const EdgeInsets.only(bottom: Spacing.s24),
               child: Text("La Rosalia",
