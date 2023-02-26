@@ -38,7 +38,7 @@ class EventDetailsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             topContent,
-            EventInformationWidget(),
+            const EventInformationWidget(),
           ],
         ),
       ),
@@ -47,7 +47,7 @@ class EventDetailsPage extends StatelessWidget {
 }
 
 class EventInformationWidget extends StatelessWidget {
-  EventInformationWidget({Key? key}) : super(key: key);
+  const EventInformationWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
