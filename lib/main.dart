@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:teapptro/features/search/presentation/pages/search_event_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:teapptro/injection.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureInjection(Environment.prod);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const TeapptroApp());
 }

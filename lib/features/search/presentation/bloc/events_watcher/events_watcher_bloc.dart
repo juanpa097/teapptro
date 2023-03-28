@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:teapptro/features/search/domain/entities/event.dart';
 import 'package:teapptro/features/search/domain/entities/event_failure.dart';
 import 'package:teapptro/features/search/domain/repositories/events_repository.dart';
@@ -13,6 +14,7 @@ part 'events_watcher_event.dart';
 
 part 'events_watcher_state.dart';
 
+@injectable
 class EventsWatcherBloc extends Bloc<EventsWatcherEvent, EventsWatcherState> {
   final EventsRepository _eventsRepository;
 
