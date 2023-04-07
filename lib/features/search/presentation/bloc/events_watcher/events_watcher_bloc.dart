@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -23,21 +23,24 @@ class EventsWatcherBloc extends Bloc<EventsWatcherEvent, EventsWatcherState> {
 
   EventsWatcherBloc(this._eventsRepository)
       : super(const EventsWatcherState.initial()) {
+    // add(EventsWatcherEvent.eventsReceived(left(const EventFailure.unexpected())));
     on<EventsWatcherEvent>(
       (event, emit) {
-        event.map(
-          watchAllStarted: (e) async* {
-            yield const EventsWatcherState.loadInProgress();
+        event.when(
+          watchAllStarted: () async {
+            emit(const EventsWatcherState.loadInProgress());
             await _eventsStreamSubscription?.cancel();
-            _eventsStreamSubscription =
-                _eventsRepository.watchAll().listen((failureOrNotes) {
-              add(EventsWatcherEvent.eventsReceived(failureOrNotes));
-            });
+            _eventsStreamSubscription = _eventsRepository.watchAll().listen(
+                  (failureOrEvents) =>
+                      add(EventsWatcherEvent.eventsReceived(failureOrEvents)),
+                );
           },
-          eventsReceived: (e) async* {
-            yield e.failureOrEvents.fold(
-              (f) => EventsWatcherState.loadFailure(f),
-              (events) => EventsWatcherState.loadSuccess(events),
+          eventsReceived: (e) {
+            emit(
+              e.fold(
+                (f) => EventsWatcherState.loadFailure(f),
+                (events) => EventsWatcherState.loadSuccess(events),
+              ),
             );
           },
         );
