@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Event {
   String get name => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
-  String get locationName => throw _privateConstructorUsedError;
+  Location get location => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
   Uri get imageUrl => throw _privateConstructorUsedError;
 
@@ -34,9 +34,11 @@ abstract class $EventCopyWith<$Res> {
   $Res call(
       {String name,
       DateTime date,
-      String locationName,
+      Location location,
       bool isFavorite,
       Uri imageUrl});
+
+  $LocationCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -54,7 +56,7 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
   $Res call({
     Object? name = null,
     Object? date = null,
-    Object? locationName = null,
+    Object? location = null,
     Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
@@ -67,10 +69,10 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      locationName: null == locationName
-          ? _value.locationName
-          : locationName // ignore: cast_nullable_to_non_nullable
-              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location,
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
@@ -80,6 +82,14 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocationCopyWith<$Res> get location {
+    return $LocationCopyWith<$Res>(_value.location, (value) {
+      return _then(_value.copyWith(location: value) as $Val);
+    });
   }
 }
 
@@ -92,9 +102,12 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
   $Res call(
       {String name,
       DateTime date,
-      String locationName,
+      Location location,
       bool isFavorite,
       Uri imageUrl});
+
+  @override
+  $LocationCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -108,7 +121,7 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
   $Res call({
     Object? name = null,
     Object? date = null,
-    Object? locationName = null,
+    Object? location = null,
     Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
@@ -121,10 +134,10 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      locationName: null == locationName
-          ? _value.locationName
-          : locationName // ignore: cast_nullable_to_non_nullable
-              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location,
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
@@ -143,7 +156,7 @@ class _$_Event implements _Event {
   const _$_Event(
       {required this.name,
       required this.date,
-      required this.locationName,
+      required this.location,
       required this.isFavorite,
       required this.imageUrl});
 
@@ -152,7 +165,7 @@ class _$_Event implements _Event {
   @override
   final DateTime date;
   @override
-  final String locationName;
+  final Location location;
   @override
   final bool isFavorite;
   @override
@@ -160,7 +173,7 @@ class _$_Event implements _Event {
 
   @override
   String toString() {
-    return 'Event(name: $name, date: $date, locationName: $locationName, isFavorite: $isFavorite, imageUrl: $imageUrl)';
+    return 'Event(name: $name, date: $date, location: $location, isFavorite: $isFavorite, imageUrl: $imageUrl)';
   }
 
   @override
@@ -170,8 +183,8 @@ class _$_Event implements _Event {
             other is _$_Event &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.locationName, locationName) ||
-                other.locationName == locationName) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
             (identical(other.isFavorite, isFavorite) ||
                 other.isFavorite == isFavorite) &&
             (identical(other.imageUrl, imageUrl) ||
@@ -180,7 +193,7 @@ class _$_Event implements _Event {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, date, locationName, isFavorite, imageUrl);
+      Object.hash(runtimeType, name, date, location, isFavorite, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +206,7 @@ abstract class _Event implements Event {
   const factory _Event(
       {required final String name,
       required final DateTime date,
-      required final String locationName,
+      required final Location location,
       required final bool isFavorite,
       required final Uri imageUrl}) = _$_Event;
 
@@ -202,7 +215,7 @@ abstract class _Event implements Event {
   @override
   DateTime get date;
   @override
-  String get locationName;
+  Location get location;
   @override
   bool get isFavorite;
   @override

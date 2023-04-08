@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:teapptro/common/location.dart';
 
 class TimestampConverter implements JsonConverter<DateTime, Timestamp> {
   const TimestampConverter();
@@ -19,4 +20,18 @@ class StringToUriConverter implements JsonConverter<Uri, String> {
 
   @override
   String toJson(Uri uri) => uri.toString();
+}
+
+class GeoPointToLocation implements JsonConverter<Location, GeoPoint> {
+  const GeoPointToLocation();
+
+  @override
+  GeoPoint toJson(Location location) =>
+      GeoPoint(location.latitude, location.longitude);
+
+  @override
+  Location fromJson(GeoPoint geoPoint) => Location(
+        latitude: geoPoint.latitude,
+        longitude: geoPoint.longitude,
+      );
 }

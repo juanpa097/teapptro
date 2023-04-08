@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teapptro/common/presentation/spacing.dart';
 import 'package:teapptro/features/search/presentation/bloc/events_watcher/events_watcher_bloc.dart';
-import 'package:teapptro/features/search/presentation/widgets/event_item_card_widget.dart';
 import 'package:teapptro/features/search/presentation/widgets/events_summary_widget.dart';
 import 'package:teapptro/features/search/presentation/widgets/filter_list_widget.dart';
 import 'package:teapptro/features/search/presentation/widgets/search_sliver_app_bar_widget.dart';
@@ -19,8 +18,7 @@ class SearchEventPage extends StatelessWidget {
           ..add(
             const EventsWatcherEvent.watchAllStarted(),
           ),
-        child: BlocConsumer<EventsWatcherBloc, EventsWatcherState>(
-          listener: (context, state) {},
+        child: BlocBuilder<EventsWatcherBloc, EventsWatcherState>(
           builder: (context, state) {
             return CustomScrollView(
               slivers: [
@@ -34,9 +32,9 @@ class SearchEventPage extends StatelessWidget {
                         const EventSummaryWidget(),
                         state.maybeMap(
                           initial: (state) => const Text("Initial"),
-                          loadFailure: (state) => const Text("Failure"),
+                          loadFailure: (state) => Text(state.failure.e?.toString() ?? ""),
                           loadInProgress: (state) => const Text("Loading"),
-                          loadSuccess: (state) => Text(state.events.toString() ?? ""),
+                          loadSuccess: (state) => Text(state.events.toString()),
                           orElse: () => const Text("orElse"),
                         )
                       ],

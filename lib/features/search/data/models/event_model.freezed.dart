@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-EventModel _$EventModelFromJson(Map<String, dynamic> json) {
-  return _EventModel.fromJson(json);
-}
-
 /// @nodoc
 mixin _$EventModel {
   @JsonKey(ignore: true)
@@ -25,12 +21,12 @@ mixin _$EventModel {
   String get name => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime get date => throw _privateConstructorUsedError;
-  String get locationName => throw _privateConstructorUsedError;
+  @GeoPointToLocation()
+  Location get location => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
   @StringToUriConverter()
   Uri get imageUrl => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $EventModelCopyWith<EventModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -46,9 +42,11 @@ abstract class $EventModelCopyWith<$Res> {
       {@JsonKey(ignore: true) String? id,
       String name,
       @TimestampConverter() DateTime date,
-      String locationName,
+      @GeoPointToLocation() Location location,
       bool isFavorite,
       @StringToUriConverter() Uri imageUrl});
+
+  $LocationCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -67,7 +65,7 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
     Object? id = freezed,
     Object? name = null,
     Object? date = null,
-    Object? locationName = null,
+    Object? location = null,
     Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
@@ -84,10 +82,10 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      locationName: null == locationName
-          ? _value.locationName
-          : locationName // ignore: cast_nullable_to_non_nullable
-              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location,
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
@@ -97,6 +95,14 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocationCopyWith<$Res> get location {
+    return $LocationCopyWith<$Res>(_value.location, (value) {
+      return _then(_value.copyWith(location: value) as $Val);
+    });
   }
 }
 
@@ -112,9 +118,12 @@ abstract class _$$_EventModelCopyWith<$Res>
       {@JsonKey(ignore: true) String? id,
       String name,
       @TimestampConverter() DateTime date,
-      String locationName,
+      @GeoPointToLocation() Location location,
       bool isFavorite,
       @StringToUriConverter() Uri imageUrl});
+
+  @override
+  $LocationCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -131,7 +140,7 @@ class __$$_EventModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = null,
     Object? date = null,
-    Object? locationName = null,
+    Object? location = null,
     Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
@@ -148,10 +157,10 @@ class __$$_EventModelCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      locationName: null == locationName
-          ? _value.locationName
-          : locationName // ignore: cast_nullable_to_non_nullable
-              as String,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Location,
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
@@ -166,19 +175,15 @@ class __$$_EventModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(fieldRename: FieldRename.snake)
 class _$_EventModel extends _EventModel {
   const _$_EventModel(
       {@JsonKey(ignore: true) this.id,
       required this.name,
       @TimestampConverter() required this.date,
-      required this.locationName,
+      @GeoPointToLocation() required this.location,
       required this.isFavorite,
       @StringToUriConverter() required this.imageUrl})
       : super._();
-
-  factory _$_EventModel.fromJson(Map<String, dynamic> json) =>
-      _$$_EventModelFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -189,7 +194,8 @@ class _$_EventModel extends _EventModel {
   @TimestampConverter()
   final DateTime date;
   @override
-  final String locationName;
+  @GeoPointToLocation()
+  final Location location;
   @override
   final bool isFavorite;
   @override
@@ -198,7 +204,7 @@ class _$_EventModel extends _EventModel {
 
   @override
   String toString() {
-    return 'EventModel(id: $id, name: $name, date: $date, locationName: $locationName, isFavorite: $isFavorite, imageUrl: $imageUrl)';
+    return 'EventModel(id: $id, name: $name, date: $date, location: $location, isFavorite: $isFavorite, imageUrl: $imageUrl)';
   }
 
   @override
@@ -209,31 +215,23 @@ class _$_EventModel extends _EventModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.locationName, locationName) ||
-                other.locationName == locationName) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
             (identical(other.isFavorite, isFavorite) ||
                 other.isFavorite == isFavorite) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, date, locationName, isFavorite, imageUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, date, location, isFavorite, imageUrl);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_EventModelCopyWith<_$_EventModel> get copyWith =>
       __$$_EventModelCopyWithImpl<_$_EventModel>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_EventModelToJson(
-      this,
-    );
-  }
 }
 
 abstract class _EventModel extends EventModel {
@@ -241,13 +239,10 @@ abstract class _EventModel extends EventModel {
       {@JsonKey(ignore: true) final String? id,
       required final String name,
       @TimestampConverter() required final DateTime date,
-      required final String locationName,
+      @GeoPointToLocation() required final Location location,
       required final bool isFavorite,
       @StringToUriConverter() required final Uri imageUrl}) = _$_EventModel;
   const _EventModel._() : super._();
-
-  factory _EventModel.fromJson(Map<String, dynamic> json) =
-      _$_EventModel.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -258,7 +253,8 @@ abstract class _EventModel extends EventModel {
   @TimestampConverter()
   DateTime get date;
   @override
-  String get locationName;
+  @GeoPointToLocation()
+  Location get location;
   @override
   bool get isFavorite;
   @override

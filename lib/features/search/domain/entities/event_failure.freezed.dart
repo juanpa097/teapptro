@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EventFailure {
+  Error? get e => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() unexpected,
+    required TResult Function(Error? e) unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? unexpected,
+    TResult? Function(Error? e)? unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unexpected,
+    TResult Function(Error? e)? unexpected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$EventFailure {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EventFailureCopyWith<EventFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,8 @@ abstract class $EventFailureCopyWith<$Res> {
   factory $EventFailureCopyWith(
           EventFailure value, $Res Function(EventFailure) then) =
       _$EventFailureCopyWithImpl<$Res, EventFailure>;
+  @useResult
+  $Res call({Error? e});
 }
 
 /// @nodoc
@@ -66,13 +73,30 @@ class _$EventFailureCopyWithImpl<$Res, $Val extends EventFailure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? e = freezed,
+  }) {
+    return _then(_value.copyWith(
+      e: freezed == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as Error?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
+abstract class _$$_UnexpectedCopyWith<$Res>
+    implements $EventFailureCopyWith<$Res> {
   factory _$$_UnexpectedCopyWith(
           _$_Unexpected value, $Res Function(_$_Unexpected) then) =
       __$$_UnexpectedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Error? e});
 }
 
 /// @nodoc
@@ -82,51 +106,75 @@ class __$$_UnexpectedCopyWithImpl<$Res>
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? e = freezed,
+  }) {
+    return _then(_$_Unexpected(
+      freezed == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as Error?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected();
+  const _$_Unexpected(this.e);
+
+  @override
+  final Error? e;
 
   @override
   String toString() {
-    return 'EventFailure.unexpected()';
+    return 'EventFailure.unexpected(e: $e)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Unexpected);
+        (other.runtimeType == runtimeType &&
+            other is _$_Unexpected &&
+            (identical(other.e, e) || other.e == e));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, e);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
+      __$$_UnexpectedCopyWithImpl<_$_Unexpected>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() unexpected,
+    required TResult Function(Error? e) unexpected,
   }) {
-    return unexpected();
+    return unexpected(e);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? unexpected,
+    TResult? Function(Error? e)? unexpected,
   }) {
-    return unexpected?.call();
+    return unexpected?.call(e);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unexpected,
+    TResult Function(Error? e)? unexpected,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
-      return unexpected();
+      return unexpected(e);
     }
     return orElse();
   }
@@ -161,5 +209,12 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements EventFailure {
-  const factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected(final Error? e) = _$_Unexpected;
+
+  @override
+  Error? get e;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
+      throw _privateConstructorUsedError;
 }

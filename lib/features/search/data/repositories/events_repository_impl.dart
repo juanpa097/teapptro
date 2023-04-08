@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:teapptro/common/data/firestore_helpers.dart';
@@ -10,7 +11,6 @@ import 'package:teapptro/features/search/domain/repositories/events_repository.d
 
 @LazySingleton(as: EventsRepository)
 class EventsRepositoryImpl extends EventsRepository {
-
   final FirebaseFirestore _firestore;
 
   EventsRepositoryImpl(this._firestore);
@@ -30,6 +30,14 @@ class EventsRepositoryImpl extends EventsRepository {
           ),
         )
         // Error to when the mapping failed.
-        .onErrorReturnWith((e, _) => left(const EventFailure.unexpected()));
+        .onErrorReturnWith(
+      (e, stackTrace) {
+        debugPrint(e is Error ? e.toString() : ">>>>>>>>>>>>>>>>>>>>>>>");
+        debugPrintStack(stackTrace: stackTrace);
+        return left(
+          EventFailure.unexpected(e is Error ? e : null),
+        );
+      },
+    );
   }
 }

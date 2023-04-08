@@ -4,5 +4,5 @@ part 'event_failure.freezed.dart';
 
 @freezed
 class EventFailure with _$EventFailure {
-  const factory EventFailure.unexpected() = _Unexpected;
+  const factory EventFailure.unexpected(Error? e) = _Unexpected;
 }
