@@ -19,7 +19,8 @@ class EventModel with _$EventModel {
     required DateTime date,
     required String locationName,
     required bool isFavorite,
-    required String imageUrl,
+    @StringToUriConverter()
+    required Uri imageUrl,
   }) = _EventModel;
 
   Event toDomain() => Event(
@@ -27,7 +28,7 @@ class EventModel with _$EventModel {
         date: date,
         locationName: locationName,
         isFavorite: isFavorite,
-        imageUrl: Uri.dataFromString(imageUrl),
+        imageUrl: imageUrl,
       );
 
   factory EventModel.fromJson(Map<String, dynamic> json) =>

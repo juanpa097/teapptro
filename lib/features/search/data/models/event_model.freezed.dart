@@ -27,7 +27,8 @@ mixin _$EventModel {
   DateTime get date => throw _privateConstructorUsedError;
   String get locationName => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  @StringToUriConverter()
+  Uri get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +48,7 @@ abstract class $EventModelCopyWith<$Res> {
       @TimestampConverter() DateTime date,
       String locationName,
       bool isFavorite,
-      String imageUrl});
+      @StringToUriConverter() Uri imageUrl});
 }
 
 /// @nodoc
@@ -94,7 +95,7 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uri,
     ) as $Val);
   }
 }
@@ -113,7 +114,7 @@ abstract class _$$_EventModelCopyWith<$Res>
       @TimestampConverter() DateTime date,
       String locationName,
       bool isFavorite,
-      String imageUrl});
+      @StringToUriConverter() Uri imageUrl});
 }
 
 /// @nodoc
@@ -158,7 +159,7 @@ class __$$_EventModelCopyWithImpl<$Res>
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Uri,
     ));
   }
 }
@@ -173,7 +174,7 @@ class _$_EventModel extends _EventModel {
       @TimestampConverter() required this.date,
       required this.locationName,
       required this.isFavorite,
-      required this.imageUrl})
+      @StringToUriConverter() required this.imageUrl})
       : super._();
 
   factory _$_EventModel.fromJson(Map<String, dynamic> json) =>
@@ -192,7 +193,8 @@ class _$_EventModel extends _EventModel {
   @override
   final bool isFavorite;
   @override
-  final String imageUrl;
+  @StringToUriConverter()
+  final Uri imageUrl;
 
   @override
   String toString() {
@@ -241,7 +243,7 @@ abstract class _EventModel extends EventModel {
       @TimestampConverter() required final DateTime date,
       required final String locationName,
       required final bool isFavorite,
-      required final String imageUrl}) = _$_EventModel;
+      @StringToUriConverter() required final Uri imageUrl}) = _$_EventModel;
   const _EventModel._() : super._();
 
   factory _EventModel.fromJson(Map<String, dynamic> json) =
@@ -260,7 +262,8 @@ abstract class _EventModel extends EventModel {
   @override
   bool get isFavorite;
   @override
-  String get imageUrl;
+  @StringToUriConverter()
+  Uri get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$$_EventModelCopyWith<_$_EventModel> get copyWith =>

@@ -11,16 +11,12 @@ class TimestampConverter implements JsonConverter<DateTime, Timestamp> {
   Timestamp toJson(DateTime date) => Timestamp.fromDate(date);
 }
 
-class BoolToIntConverter implements JsonConverter<bool, int> {
-  const BoolToIntConverter();
+class StringToUriConverter implements JsonConverter<Uri, String> {
+  const StringToUriConverter();
 
   @override
-  bool fromJson(int json) {
-    return json == 1 ? true : false;
-  }
+  Uri fromJson(String uri) => Uri.parse(uri);
 
   @override
-  int toJson(bool object) {
-    return object ? 1 : 0;
-  }
+  String toJson(Uri uri) => uri.toString();
 }

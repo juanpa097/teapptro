@@ -12,7 +12,8 @@ _$_EventModel _$$_EventModelFromJson(Map<String, dynamic> json) =>
       date: const TimestampConverter().fromJson(json['date'] as Timestamp),
       locationName: json['location_name'] as String,
       isFavorite: json['is_favorite'] as bool,
-      imageUrl: json['image_url'] as String,
+      imageUrl:
+          const StringToUriConverter().fromJson(json['image_url'] as String),
     );
 
 Map<String, dynamic> _$$_EventModelToJson(_$_EventModel instance) =>
@@ -21,5 +22,5 @@ Map<String, dynamic> _$$_EventModelToJson(_$_EventModel instance) =>
       'date': const TimestampConverter().toJson(instance.date),
       'location_name': instance.locationName,
       'is_favorite': instance.isFavorite,
-      'image_url': instance.imageUrl,
+      'image_url': const StringToUriConverter().toJson(instance.imageUrl),
     };
