@@ -23,9 +23,10 @@ mixin _$EventModel {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get date => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime get date => throw _privateConstructorUsedError;
   String get locationName => throw _privateConstructorUsedError;
-  String get isFavorite => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,9 +44,9 @@ abstract class $EventModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String name,
-      String date,
+      @TimestampConverter() DateTime date,
       String locationName,
-      String isFavorite,
+      bool isFavorite,
       String imageUrl});
 }
 
@@ -81,7 +82,7 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       locationName: null == locationName
           ? _value.locationName
           : locationName // ignore: cast_nullable_to_non_nullable
@@ -89,7 +90,7 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -109,9 +110,9 @@ abstract class _$$_EventModelCopyWith<$Res>
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String name,
-      String date,
+      @TimestampConverter() DateTime date,
       String locationName,
-      String isFavorite,
+      bool isFavorite,
       String imageUrl});
 }
 
@@ -145,7 +146,7 @@ class __$$_EventModelCopyWithImpl<$Res>
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       locationName: null == locationName
           ? _value.locationName
           : locationName // ignore: cast_nullable_to_non_nullable
@@ -153,7 +154,7 @@ class __$$_EventModelCopyWithImpl<$Res>
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -169,7 +170,7 @@ class _$_EventModel extends _EventModel {
   const _$_EventModel(
       {@JsonKey(ignore: true) this.id,
       required this.name,
-      required this.date,
+      @TimestampConverter() required this.date,
       required this.locationName,
       required this.isFavorite,
       required this.imageUrl})
@@ -184,11 +185,12 @@ class _$_EventModel extends _EventModel {
   @override
   final String name;
   @override
-  final String date;
+  @TimestampConverter()
+  final DateTime date;
   @override
   final String locationName;
   @override
-  final String isFavorite;
+  final bool isFavorite;
   @override
   final String imageUrl;
 
@@ -236,9 +238,9 @@ abstract class _EventModel extends EventModel {
   const factory _EventModel(
       {@JsonKey(ignore: true) final String? id,
       required final String name,
-      required final String date,
+      @TimestampConverter() required final DateTime date,
       required final String locationName,
-      required final String isFavorite,
+      required final bool isFavorite,
       required final String imageUrl}) = _$_EventModel;
   const _EventModel._() : super._();
 
@@ -251,11 +253,12 @@ abstract class _EventModel extends EventModel {
   @override
   String get name;
   @override
-  String get date;
+  @TimestampConverter()
+  DateTime get date;
   @override
   String get locationName;
   @override
-  String get isFavorite;
+  bool get isFavorite;
   @override
   String get imageUrl;
   @override

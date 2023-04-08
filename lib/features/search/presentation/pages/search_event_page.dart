@@ -36,7 +36,7 @@ class SearchEventPage extends StatelessWidget {
                           initial: (state) => const Text("Initial"),
                           loadFailure: (state) => const Text("Failure"),
                           loadInProgress: (state) => const Text("Loading"),
-                          loadSuccess: (state) => const EventItemCardWidget(),
+                          loadSuccess: (state) => Text(state.events.toString() ?? ""),
                           orElse: () => const Text("orElse"),
                         )
                       ],

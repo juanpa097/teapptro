@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:teapptro/common/data/json_converters.dart';
 import 'package:teapptro/features/search/domain/entities/event.dart';
 
 part 'event_model.freezed.dart';
@@ -14,17 +15,18 @@ class EventModel with _$EventModel {
   const factory EventModel({
     @JsonKey(ignore: true) String? id,
     required String name,
-    required String date,
+    @TimestampConverter()
+    required DateTime date,
     required String locationName,
-    required String isFavorite,
+    required bool isFavorite,
     required String imageUrl,
   }) = _EventModel;
 
   Event toDomain() => Event(
         name: name,
-        date: DateTime.now(),
+        date: date,
         locationName: locationName,
-        isFavorite: true,
+        isFavorite: isFavorite,
         imageUrl: Uri.dataFromString(imageUrl),
       );
 
