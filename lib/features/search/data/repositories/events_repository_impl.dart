@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -30,11 +29,8 @@ class EventsRepositoryImpl extends EventsRepository {
                 .toList(),
           ),
         )
-        // Error to when the mapping failed.
         .onErrorReturnWith(
       (Object e, StackTrace stackTrace) {
-        debugPrint(e is Error ? e.toString() : '>>>>>>>>>>>>>>>>>>>>>>>');
-        debugPrintStack(stackTrace: stackTrace);
         return left(
           EventFailure.unexpected(e is Error ? e : null),
         );
