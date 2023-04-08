@@ -1,11 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:teapptro/common/location.dart';
+import '../../../../common/location.dart';
 
 part 'event.freezed.dart';
 
 @freezed
 class Event with _$Event {
-
   const factory Event({
     required String name,
     required DateTime date,

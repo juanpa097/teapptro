@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:teapptro/common/presentation/spacing.dart';
+import '../../../../common/presentation/spacing.dart';
 
 class EventDetailsPage extends StatelessWidget {
-  const EventDetailsPage({Key? key}) : super(key: key);
+  const EventDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("Events details");
+    debugPrint('Events details');
 
-    final topContent = Stack(
-      children: <Widget>[
+    final Stack topContent = Stack(
+      children: [
         Container(
           height: 240,
           decoration: const BoxDecoration(
@@ -47,7 +47,7 @@ class EventDetailsPage extends StatelessWidget {
 }
 
 class EventInformationWidget extends StatelessWidget {
-  const EventInformationWidget({Key? key}) : super(key: key);
+  const EventInformationWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class EventInformationWidget extends StatelessWidget {
         children: [
           Container(
               margin: const EdgeInsets.only(bottom: Spacing.s24),
-              child: Text("La Rosalia",
+              child: Text('La Rosalia',
                   style: Theme.of(context).textTheme.headline5)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,13 +74,13 @@ class EventInformationWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Mon, Apr 18 · 21:00 Pm",
+                  Text('Mon, Apr 18 · 21:00 Pm',
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: Spacing.s8),
-                  Text("21:00 Pm - 23.30 Pm",
+                  Text('21:00 Pm - 23.30 Pm',
                       style: Theme.of(context).textTheme.caption),
                   const SizedBox(height: Spacing.s8),
-                  Text("Add to calandar",
+                  Text('Add to calandar',
                       style: Theme.of(context).textTheme.caption?.copyWith(
                           color: Colors.blueAccent,
                           fontWeight: FontWeight.w700)),
@@ -102,13 +102,13 @@ class EventInformationWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Palau Sant Jordi",
+                  Text('Palau Sant Jordi',
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: Spacing.s8),
-                  Text("Passeig Olímpic, 5-7, 08038 Barcelona",
+                  Text('Passeig Olímpic, 5-7, 08038 Barcelona',
                       style: Theme.of(context).textTheme.caption),
                   const SizedBox(height: Spacing.s8),
-                  Text("View on maps",
+                  Text('View on maps',
                       style: Theme.of(context).textTheme.caption?.copyWith(
                           color: Colors.blueAccent,
                           fontWeight: FontWeight.w700)),
@@ -122,10 +122,10 @@ class EventInformationWidget extends StatelessWidget {
             children: [
               Container(
                   margin: const EdgeInsets.only(bottom: Spacing.s8),
-                  child: Text("About",
+                  child: Text('About',
                       style: Theme.of(context).textTheme.subtitle1)),
               Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                   style: Theme.of(context).textTheme.bodyText1),
             ],
           ),

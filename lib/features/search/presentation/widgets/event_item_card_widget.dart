@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:teapptro/common/presentation/spacing.dart';
-import 'package:teapptro/features/details/presentation/pages/event_details_page.dart';
-import 'package:teapptro/features/search/domain/entities/event.dart';
+import '../../../../common/presentation/spacing.dart';
+import '../../../details/presentation/pages/event_details_page.dart';
+import '../../domain/entities/event.dart';
 
 class EventItemCardWidget extends StatelessWidget {
-  final Event event;
-
   const EventItemCardWidget({
-    Key? key,
+    super.key,
     required this.event,
-  }) : super(key: key);
+  });
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,8 @@ class EventItemCardWidget extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const EventDetailsPage()));
+                    builder: (BuildContext context) =>
+                        const EventDetailsPage()));
           },
         ),
       ),
@@ -39,12 +39,11 @@ class EventItemCardWidget extends StatelessWidget {
 }
 
 class EventCardInfo extends StatelessWidget {
-  final Event event;
-
   const EventCardInfo({
-    Key? key,
+    super.key,
     required this.event,
-  }) : super(key: key);
+  });
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class EventCardInfo extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Thu, Apr 19 · 20.00 Pm",
+              Text('Thu, Apr 19 · 20.00 Pm',
                   style: Theme.of(context).textTheme.caption),
               Text(event.name, style: Theme.of(context).textTheme.subtitle1)
             ],
@@ -69,7 +68,7 @@ class EventCardInfo extends StatelessWidget {
                 Icons.pin_drop_outlined,
                 color: Theme.of(context).textTheme.caption?.color,
               ),
-              Text("Razzmatazz", style: Theme.of(context).textTheme.caption),
+              Text('Razzmatazz', style: Theme.of(context).textTheme.caption),
             ],
           ),
         ],
@@ -79,7 +78,7 @@ class EventCardInfo extends StatelessWidget {
 }
 
 class EventCardActionItems extends StatelessWidget {
-  const EventCardActionItems({Key? key}) : super(key: key);
+  const EventCardActionItems({super.key});
 
   @override
   Widget build(BuildContext context) {

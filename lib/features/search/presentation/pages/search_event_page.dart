@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teapptro/common/presentation/spacing.dart';
-import 'package:teapptro/features/search/presentation/bloc/events_watcher/events_watcher_bloc.dart';
-import 'package:teapptro/features/search/presentation/widgets/event_item_card_widget.dart';
-import 'package:teapptro/features/search/presentation/widgets/filter_list_widget.dart';
-import 'package:teapptro/features/search/presentation/widgets/search_sliver_app_bar_widget.dart';
-import 'package:teapptro/injection.dart';
+
+import '../../../../common/presentation/spacing.dart';
+import '../../../../injection.dart';
+import '../../domain/entities/event.dart';
+import '../bloc/events_watcher/events_watcher_bloc.dart';
+import '../widgets/event_item_card_widget.dart';
+import '../widgets/filter_list_widget.dart';
+import '../widgets/search_sliver_app_bar_widget.dart';
 
 class SearchEventPage extends StatelessWidget {
-  const SearchEventPage({Key? key}) : super(key: key);
+  const SearchEventPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => getIt<EventsWatcherBloc>()
+        create: (BuildContext context) => getIt<EventsWatcherBloc>()
           ..add(
             const EventsWatcherEvent.watchAllStarted(),
           ),
         child: BlocBuilder<EventsWatcherBloc, EventsWatcherState>(
-          builder: (context, state) {
+          builder: (BuildContext context, EventsWatcherState state) {
             return CustomScrollView(
               slivers: [
                 const SearchSliverAppBarWidget(),
@@ -28,17 +30,17 @@ class SearchEventPage extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: Spacing.s16),
                     sliver: state.map(
-                      initial: (state) => const SliverFillRemaining(
-                          child: Center(child: Text("Initial"))),
+                      initial: (EventsWatcherState state) => const SliverFillRemaining(
+                          child: Center(child: Text('Initial'))),
                       loadFailure: (state) => SliverFillRemaining(
                           child: Center(
-                              child: Text(state.failure.e?.toString() ?? ""))),
+                              child: Text(state.failure.e?.toString() ?? ''))),
                       loadInProgress: (state) => const SliverFillRemaining(
                           child: Center(child: CircularProgressIndicator())),
                       loadSuccess: (state) => SliverList(
                         delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
-                          final event = state.events[index];
+                          final Event event = state.events[index];
                           return EventItemCardWidget(event: event);
                         }, childCount: state.events.length),
                       ),

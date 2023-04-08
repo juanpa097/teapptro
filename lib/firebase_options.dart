@@ -42,9 +42,10 @@ class DefaultFirebaseOptions {
           'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
-      default:
+      case TargetPlatform.fuchsia:
         throw UnsupportedError(
-          'DefaultFirebaseOptions are not supported for this platform.',
+          'DefaultFirebaseOptions have not been configured for linux - '
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
     }
   }
@@ -63,8 +64,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '817215982984',
     projectId: 'teapptro',
     storageBucket: 'teapptro.appspot.com',
-    androidClientId: '817215982984-g2d23n8sbjrq5s25j4jemilfmqegi02j.apps.googleusercontent.com',
-    iosClientId: '817215982984-jq8anv2d3dci4ek0ufffuih2u9gegrkr.apps.googleusercontent.com',
+    androidClientId:
+        '817215982984-g2d23n8sbjrq5s25j4jemilfmqegi02j.apps.googleusercontent.com',
+    iosClientId:
+        '817215982984-jq8anv2d3dci4ek0ufffuih2u9gegrkr.apps.googleusercontent.com',
     iosBundleId: 'com.example.teapptro',
   );
 }

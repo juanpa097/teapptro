@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 
 class SearchSliverAppBarWidget extends StatefulWidget {
-  const SearchSliverAppBarWidget({Key? key}) : super(key: key);
+  const SearchSliverAppBarWidget({super.key});
 
   @override
   State createState() => _SearchSliverAppBarState();
 }
 
 class _SearchSliverAppBarState extends State<SearchSliverAppBarWidget> {
-
   @override
-  Widget build(BuildContext context) =>
-      SliverAppBar(
+  Widget build(BuildContext context) => SliverAppBar(
         floating: true,
         pinned: true,
-        snap: false,
-        title: const Text("Events"),
+        title: const Text('Events'),
         bottom: AppBar(
           title: Container(
             width: double.infinity,

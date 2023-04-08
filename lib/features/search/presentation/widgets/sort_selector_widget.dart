@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SortSelectorWidget extends StatefulWidget {
-  const SortSelectorWidget({Key? key}) : super(key: key);
+  const SortSelectorWidget({super.key});
 
   @override
   State<SortSelectorWidget> createState() => _SortSelectorState();
@@ -12,7 +12,8 @@ class _SortSelectorState extends State<SortSelectorWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>( // Change to PopupMenuButton
+    return DropdownButton<String>(
+      // Change to PopupMenuButton
       value: dropdownValue,
       elevation: 16,
       onChanged: (String? newValue) {
