@@ -17,7 +17,6 @@ part 'events_watcher_state.dart';
 class EventsWatcherBloc extends Bloc<EventsWatcherEvent, EventsWatcherState> {
   EventsWatcherBloc(this._eventsRepository)
       : super(const EventsWatcherState.initial()) {
-    // add(EventsWatcherEvent.eventsReceived(left(const EventFailure.unexpected())));
     on<EventsWatcherEvent>(
       (EventsWatcherEvent event, Emitter<EventsWatcherState> emit) {
         event.when(

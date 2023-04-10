@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../common/presentation/spacing.dart';
 import '../../../details/presentation/pages/event_details_page.dart';
 import '../../domain/entities/event.dart';
@@ -8,6 +9,7 @@ class EventItemCardWidget extends StatelessWidget {
     super.key,
     required this.event,
   });
+
   final Event event;
 
   @override
@@ -27,10 +29,11 @@ class EventItemCardWidget extends StatelessWidget {
           ),
           onTap: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        const EventDetailsPage()));
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => const EventDetailsPage(),
+              ),
+            );
           },
         ),
       ),
@@ -43,6 +46,7 @@ class EventCardInfo extends StatelessWidget {
     super.key,
     required this.event,
   });
+
   final Event event;
 
   @override

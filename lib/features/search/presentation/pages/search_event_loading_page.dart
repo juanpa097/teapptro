@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchEventLoadingEvent extends StatelessWidget {
-  const SearchEventLoadingEvent({super.key});
+class SearchEventLoadingPage extends StatelessWidget {
+  const SearchEventLoadingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
