@@ -11,10 +11,10 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:teapptro/common/data/firebase_injectable_module.dart' as _i8;
 import 'package:teapptro/features/search/data/repositories/events_repository_impl.dart'
     as _i6;
-import 'package:teapptro/features/search/domain/format_event_item_date.dart'
-    as _i4;
 import 'package:teapptro/features/search/domain/repositories/events_repository.dart'
     as _i5;
+import 'package:teapptro/features/search/domain/usecases/format_event_item_date.dart'
+    as _i4;
 import 'package:teapptro/features/search/presentation/bloc/events_watcher/events_watcher_bloc.dart'
     as _i7; // ignore_for_file: unnecessary_lambdas
 

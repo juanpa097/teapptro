@@ -4,7 +4,7 @@ import '../../../../common/presentation/spacing.dart';
 import '../../../../injection.dart';
 import '../../../details/presentation/pages/event_details_page.dart';
 import '../../domain/entities/event.dart';
-import '../../domain/format_event_item_date.dart';
+import '../../domain/usecases/format_event_item_date.dart';
 
 class EventItemCardWidget extends StatelessWidget {
   const EventItemCardWidget({
