@@ -7,11 +7,12 @@ import '../../../../common/data/firestore_helpers.dart';
 import '../../domain/entities/event.dart';
 import '../../domain/entities/event_failure.dart';
 import '../../domain/repositories/events_repository.dart';
-import '../models/event_model.dart';
+import '../mappers/event_mapper.dart';
 
 @LazySingleton(as: EventsRepository)
 class EventsRepositoryImpl extends EventsRepository {
   EventsRepositoryImpl(this._firestore);
+
   final FirebaseFirestore _firestore;
 
   @override
@@ -20,21 +21,12 @@ class EventsRepositoryImpl extends EventsRepository {
         _firestore.eventsCollection;
     yield* eventsDoc
         .snapshots()
-        .map(
-          (QuerySnapshot<Map<String, dynamic>> snapshot) =>
-              right<EventFailure, List<Event>>(
-            snapshot.docs
-                .map((QueryDocumentSnapshot<Map<String, dynamic>> doc) =>
-                    EventModel.fromFirestore(doc).toDomain())
-                .toList(),
-          ),
-        )
-        .onErrorReturnWith(
-      (Object e, StackTrace stackTrace) {
-        return left(
-          EventFailure.unexpected(e is Error ? e : null),
-        );
-      },
-    );
+        .map(mapListEvent)
+        .onErrorReturnWith(mapEventFailure);
+  }
+
+  @override
+  Stream<Either<EventFailure, bool>> addAsFavorite(String eventId) {
+    throw UnimplementedError();
   }
 }
