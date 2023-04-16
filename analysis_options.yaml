@@ -19,6 +19,7 @@ analyzer:
     must_be_immutable: error
   exclude:
     - "**.g.dart"
+    - "**.config.dart"
 
 linter:
   rules:

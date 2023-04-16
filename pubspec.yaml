@@ -22,6 +22,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   injectable: ^2.1.0
   get_it: ^7.2.0
+  intl: ^0.18.0
 
 dev_dependencies:
   freezed: ^2.3.2
