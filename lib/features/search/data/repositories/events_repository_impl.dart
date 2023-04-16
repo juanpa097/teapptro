@@ -26,7 +26,23 @@ class EventsRepositoryImpl extends EventsRepository {
   }
 
   @override
-  Stream<Either<EventFailure, bool>> addAsFavorite(String eventId) {
-    throw UnimplementedError();
+  Future<Either<EventFailure, bool>> addAsFavorite(String eventId) =>
+      _setIsFavorite(eventId, true);
+
+  @override
+  Future<Either<EventFailure, bool>> removeAsFavorite(String eventId) =>
+      _setIsFavorite(eventId, false);
+
+  Future<Either<EventFailure, bool>> _setIsFavorite(
+    String eventId,
+    bool isFavorite,
+  ) {
+    final CollectionReference<Map<String, dynamic>> eventsDoc =
+        _firestore.eventsCollection;
+    return eventsDoc
+        .doc(eventId)
+        .set({'is_favorite': isFavorite})
+        .then((value) => right<EventFailure, bool>(true))
+        .onError(mapEventFailure);
   }
 }

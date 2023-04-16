@@ -17,7 +17,7 @@ Event mapEvent(
 ) =>
     EventModel.fromFirestore(doc).toDomain();
 
-Either<EventFailure, List<Event>> mapEventFailure(
+Either<EventFailure, T> mapEventFailure<T>(
   Object e,
   StackTrace stackTrace,
 ) =>
