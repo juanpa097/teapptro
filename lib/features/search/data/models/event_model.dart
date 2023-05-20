@@ -1,7 +1,6 @@
 // ignore_for_file: annotate_overrides, invalid_annotation_target
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../common/data/firestore_helpers.dart';
 import '../../../../common/data/json_converters.dart';
@@ -21,6 +20,7 @@ class EventModel with _$EventModel {
     @TimestampConverter() required DateTime date,
     @GeoPointToLocation() required Location location,
     @StringToUriConverter() required Uri imageUrl,
+    required String description,
   }) = _EventModel;
 
   factory EventModel.fromFirestore(
@@ -35,5 +35,6 @@ class EventModel with _$EventModel {
         date: date,
         location: location,
         imageUrl: imageUrl,
+        description: description,
       );
 }

@@ -11,5 +11,6 @@ class Event with _$Event {
     required DateTime date,
     required Location location,
     required Uri imageUrl,
+    required String description,
   }) = _Event;
 }

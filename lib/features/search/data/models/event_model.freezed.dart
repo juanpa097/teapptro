@@ -24,6 +24,7 @@ mixin _$EventModel {
   Location get location => throw _privateConstructorUsedError;
   @StringToUriConverter()
   Uri get imageUrl => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventModelCopyWith<EventModel> get copyWith =>
@@ -41,7 +42,8 @@ abstract class $EventModelCopyWith<$Res> {
       String name,
       @TimestampConverter() DateTime date,
       @GeoPointToLocation() Location location,
-      @StringToUriConverter() Uri imageUrl});
+      @StringToUriConverter() Uri imageUrl,
+      String description});
 
   $LocationCopyWith<$Res> get location;
 }
@@ -64,6 +66,7 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
     Object? date = null,
     Object? location = null,
     Object? imageUrl = null,
+    Object? description = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -86,6 +89,10 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -111,7 +118,8 @@ abstract class _$$_EventModelCopyWith<$Res>
       String name,
       @TimestampConverter() DateTime date,
       @GeoPointToLocation() Location location,
-      @StringToUriConverter() Uri imageUrl});
+      @StringToUriConverter() Uri imageUrl,
+      String description});
 
   @override
   $LocationCopyWith<$Res> get location;
@@ -133,6 +141,7 @@ class __$$_EventModelCopyWithImpl<$Res>
     Object? date = null,
     Object? location = null,
     Object? imageUrl = null,
+    Object? description = null,
   }) {
     return _then(_$_EventModel(
       id: null == id
@@ -155,6 +164,10 @@ class __$$_EventModelCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -167,7 +180,8 @@ class _$_EventModel extends _EventModel {
       required this.name,
       @TimestampConverter() required this.date,
       @GeoPointToLocation() required this.location,
-      @StringToUriConverter() required this.imageUrl})
+      @StringToUriConverter() required this.imageUrl,
+      required this.description})
       : super._();
 
   @override
@@ -183,10 +197,12 @@ class _$_EventModel extends _EventModel {
   @override
   @StringToUriConverter()
   final Uri imageUrl;
+  @override
+  final String description;
 
   @override
   String toString() {
-    return 'EventModel(id: $id, name: $name, date: $date, location: $location, imageUrl: $imageUrl)';
+    return 'EventModel(id: $id, name: $name, date: $date, location: $location, imageUrl: $imageUrl, description: $description)';
   }
 
   @override
@@ -200,12 +216,14 @@ class _$_EventModel extends _EventModel {
             (identical(other.location, location) ||
                 other.location == location) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, date, location, imageUrl);
+      Object.hash(runtimeType, id, name, date, location, imageUrl, description);
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +238,8 @@ abstract class _EventModel extends EventModel {
       required final String name,
       @TimestampConverter() required final DateTime date,
       @GeoPointToLocation() required final Location location,
-      @StringToUriConverter() required final Uri imageUrl}) = _$_EventModel;
+      @StringToUriConverter() required final Uri imageUrl,
+      required final String description}) = _$_EventModel;
   const _EventModel._() : super._();
 
   @override
@@ -236,6 +255,8 @@ abstract class _EventModel extends EventModel {
   @override
   @StringToUriConverter()
   Uri get imageUrl;
+  @override
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$$_EventModelCopyWith<_$_EventModel> get copyWith =>

@@ -5,15 +5,14 @@ import '../../domain/entities/event.dart';
 import '../../domain/entities/event_failure.dart';
 import '../models/event_model.dart';
 
-Either<EventFailure, List<Event>> mapListEvent(
+List<Event> mapListEvent(
   QuerySnapshot<Map<String, dynamic>> snapshot,
 ) =>
-    right<EventFailure, List<Event>>(
-      snapshot.docs.map(mapEvent).toList(),
-    );
+    snapshot.docs.map(mapEvent).toList();
+
 
 Event mapEvent(
-  QueryDocumentSnapshot<Map<String, dynamic>> doc,
+    DocumentSnapshot<Map<String, dynamic>> doc,
 ) =>
     EventModel.fromFirestore(doc).toDomain();
 

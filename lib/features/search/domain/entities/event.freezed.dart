@@ -21,6 +21,7 @@ mixin _$Event {
   DateTime get date => throw _privateConstructorUsedError;
   Location get location => throw _privateConstructorUsedError;
   Uri get imageUrl => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
@@ -32,7 +33,12 @@ abstract class $EventCopyWith<$Res> {
       _$EventCopyWithImpl<$Res, Event>;
   @useResult
   $Res call(
-      {String id, String name, DateTime date, Location location, Uri imageUrl});
+      {String id,
+      String name,
+      DateTime date,
+      Location location,
+      Uri imageUrl,
+      String description});
 
   $LocationCopyWith<$Res> get location;
 }
@@ -55,6 +61,7 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? date = null,
     Object? location = null,
     Object? imageUrl = null,
+    Object? description = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -77,6 +84,10 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -96,7 +107,12 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id, String name, DateTime date, Location location, Uri imageUrl});
+      {String id,
+      String name,
+      DateTime date,
+      Location location,
+      Uri imageUrl,
+      String description});
 
   @override
   $LocationCopyWith<$Res> get location;
@@ -116,6 +132,7 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
     Object? date = null,
     Object? location = null,
     Object? imageUrl = null,
+    Object? description = null,
   }) {
     return _then(_$_Event(
       id: null == id
@@ -138,6 +155,10 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as Uri,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -150,7 +171,8 @@ class _$_Event implements _Event {
       required this.name,
       required this.date,
       required this.location,
-      required this.imageUrl});
+      required this.imageUrl,
+      required this.description});
 
   @override
   final String id;
@@ -162,10 +184,12 @@ class _$_Event implements _Event {
   final Location location;
   @override
   final Uri imageUrl;
+  @override
+  final String description;
 
   @override
   String toString() {
-    return 'Event(id: $id, name: $name, date: $date, location: $location, imageUrl: $imageUrl)';
+    return 'Event(id: $id, name: $name, date: $date, location: $location, imageUrl: $imageUrl, description: $description)';
   }
 
   @override
@@ -179,12 +203,14 @@ class _$_Event implements _Event {
             (identical(other.location, location) ||
                 other.location == location) &&
             (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.imageUrl == imageUrl) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, date, location, imageUrl);
+      Object.hash(runtimeType, id, name, date, location, imageUrl, description);
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +225,8 @@ abstract class _Event implements Event {
       required final String name,
       required final DateTime date,
       required final Location location,
-      required final Uri imageUrl}) = _$_Event;
+      required final Uri imageUrl,
+      required final String description}) = _$_Event;
 
   @override
   String get id;
@@ -211,6 +238,8 @@ abstract class _Event implements Event {
   Location get location;
   @override
   Uri get imageUrl;
+  @override
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$$_EventCopyWith<_$_Event> get copyWith =>
