@@ -6,8 +6,6 @@ class EventDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('Events details');
-
     final Stack topContent = Stack(
       children: [
         Container(

@@ -7,6 +7,7 @@ part of 'event_model.dart';
 // **************************************************************************
 
 EventModel _$EventModelFromJson(Map<String, dynamic> json) => EventModel(
+      id: json['id'] as String,
       name: json['name'] as String,
       date: const TimestampConverter().fromJson(json['date'] as Timestamp),
       location:
@@ -17,6 +18,7 @@ EventModel _$EventModelFromJson(Map<String, dynamic> json) => EventModel(
 
 Map<String, dynamic> _$EventModelToJson(EventModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'date': const TimestampConverter().toJson(instance.date),
       'location': const GeoPointToLocation().toJson(instance.location),

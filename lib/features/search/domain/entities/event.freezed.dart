@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Event {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   Location get location => throw _privateConstructorUsedError;
@@ -30,7 +31,8 @@ abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) =
       _$EventCopyWithImpl<$Res, Event>;
   @useResult
-  $Res call({String name, DateTime date, Location location, Uri imageUrl});
+  $Res call(
+      {String id, String name, DateTime date, Location location, Uri imageUrl});
 
   $LocationCopyWith<$Res> get location;
 }
@@ -48,12 +50,17 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? date = null,
     Object? location = null,
     Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -88,7 +95,8 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       __$$_EventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, DateTime date, Location location, Uri imageUrl});
+  $Res call(
+      {String id, String name, DateTime date, Location location, Uri imageUrl});
 
   @override
   $LocationCopyWith<$Res> get location;
@@ -103,12 +111,17 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? date = null,
     Object? location = null,
     Object? imageUrl = null,
   }) {
     return _then(_$_Event(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -133,11 +146,14 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
 
 class _$_Event implements _Event {
   const _$_Event(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.date,
       required this.location,
       required this.imageUrl});
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -149,7 +165,7 @@ class _$_Event implements _Event {
 
   @override
   String toString() {
-    return 'Event(name: $name, date: $date, location: $location, imageUrl: $imageUrl)';
+    return 'Event(id: $id, name: $name, date: $date, location: $location, imageUrl: $imageUrl)';
   }
 
   @override
@@ -157,6 +173,7 @@ class _$_Event implements _Event {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Event &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.location, location) ||
@@ -166,7 +183,8 @@ class _$_Event implements _Event {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, date, location, imageUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, date, location, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -177,11 +195,14 @@ class _$_Event implements _Event {
 
 abstract class _Event implements Event {
   const factory _Event(
-      {required final String name,
+      {required final String id,
+      required final String name,
       required final DateTime date,
       required final Location location,
       required final Uri imageUrl}) = _$_Event;
 
+  @override
+  String get id;
   @override
   String get name;
   @override

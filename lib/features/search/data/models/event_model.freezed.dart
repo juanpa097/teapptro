@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EventModel {
-  @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime get date => throw _privateConstructorUsedError;
@@ -38,7 +37,7 @@ abstract class $EventModelCopyWith<$Res> {
       _$EventModelCopyWithImpl<$Res, EventModel>;
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) String? id,
+      {String id,
       String name,
       @TimestampConverter() DateTime date,
       @GeoPointToLocation() Location location,
@@ -60,17 +59,17 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? date = null,
     Object? location = null,
     Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -108,7 +107,7 @@ abstract class _$$_EventModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) String? id,
+      {String id,
       String name,
       @TimestampConverter() DateTime date,
       @GeoPointToLocation() Location location,
@@ -129,17 +128,17 @@ class __$$_EventModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? date = null,
     Object? location = null,
     Object? imageUrl = null,
   }) {
     return _then(_$_EventModel(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -164,7 +163,7 @@ class __$$_EventModelCopyWithImpl<$Res>
 
 class _$_EventModel extends _EventModel {
   const _$_EventModel(
-      {@JsonKey(ignore: true) this.id,
+      {required this.id,
       required this.name,
       @TimestampConverter() required this.date,
       @GeoPointToLocation() required this.location,
@@ -172,8 +171,7 @@ class _$_EventModel extends _EventModel {
       : super._();
 
   @override
-  @JsonKey(ignore: true)
-  final String? id;
+  final String id;
   @override
   final String name;
   @override
@@ -218,7 +216,7 @@ class _$_EventModel extends _EventModel {
 
 abstract class _EventModel extends EventModel {
   const factory _EventModel(
-      {@JsonKey(ignore: true) final String? id,
+      {required final String id,
       required final String name,
       @TimestampConverter() required final DateTime date,
       @GeoPointToLocation() required final Location location,
@@ -226,8 +224,7 @@ abstract class _EventModel extends EventModel {
   const _EventModel._() : super._();
 
   @override
-  @JsonKey(ignore: true)
-  String? get id;
+  String get id;
   @override
   String get name;
   @override
