@@ -6,7 +6,6 @@ import '../../../../injection.dart';
 import '../../domain/entities/event_failure.dart';
 import '../bloc/events_watcher/events_watcher_bloc.dart';
 import '../widgets/events_list_sliver.dart';
-import '../widgets/filter_list_widget.dart';
 import '../widgets/search_sliver_app_bar_widget.dart';
 import 'search_event_loading_page.dart';
 
@@ -26,7 +25,6 @@ class SearchEventPage extends StatelessWidget {
             return CustomScrollView(
               slivers: [
                 const SearchSliverAppBarWidget(),
-                const FilterListWidget(),
                 state.when(
                   initial: () => _getSliverLoadingState(),
                   loadInProgress: () => _getSliverLoadingState(),

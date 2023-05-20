@@ -25,14 +25,4 @@ class EventsRepositoryImpl extends EventsRepository {
         .onErrorReturnWith(mapEventFailure);
   }
 
-  @override
-  Future<Either<EventFailure, bool>> updateIsFavorite(String eventId, bool isFavorite) {
-    final CollectionReference<Map<String, dynamic>> eventsDoc =
-        _firestore.eventsCollection;
-    return eventsDoc
-        .doc(eventId)
-        .set({'is_favorite': isFavorite})
-        .then((value) => right<EventFailure, bool>(true))
-        .onError(mapEventFailure);
-  }
 }

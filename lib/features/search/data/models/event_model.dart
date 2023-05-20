@@ -18,7 +18,6 @@ class EventModel with _$EventModel {
     required String name,
     @TimestampConverter() required DateTime date,
     @GeoPointToLocation() required Location location,
-    required bool isFavorite,
     @StringToUriConverter() required Uri imageUrl,
   }) = _EventModel;
 
@@ -32,7 +31,6 @@ class EventModel with _$EventModel {
         name: name,
         date: date,
         location: location,
-        isFavorite: isFavorite,
         imageUrl: imageUrl,
       );
 }

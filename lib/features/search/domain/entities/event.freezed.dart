@@ -19,7 +19,6 @@ mixin _$Event {
   String get name => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   Location get location => throw _privateConstructorUsedError;
-  bool get isFavorite => throw _privateConstructorUsedError;
   Uri get imageUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,12 +30,7 @@ abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) =
       _$EventCopyWithImpl<$Res, Event>;
   @useResult
-  $Res call(
-      {String name,
-      DateTime date,
-      Location location,
-      bool isFavorite,
-      Uri imageUrl});
+  $Res call({String name, DateTime date, Location location, Uri imageUrl});
 
   $LocationCopyWith<$Res> get location;
 }
@@ -57,7 +51,6 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? name = null,
     Object? date = null,
     Object? location = null,
-    Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
@@ -73,10 +66,6 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Location,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -99,12 +88,7 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       __$$_EventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      DateTime date,
-      Location location,
-      bool isFavorite,
-      Uri imageUrl});
+  $Res call({String name, DateTime date, Location location, Uri imageUrl});
 
   @override
   $LocationCopyWith<$Res> get location;
@@ -122,7 +106,6 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
     Object? name = null,
     Object? date = null,
     Object? location = null,
-    Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
     return _then(_$_Event(
@@ -138,10 +121,6 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Location,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -157,7 +136,6 @@ class _$_Event implements _Event {
       {required this.name,
       required this.date,
       required this.location,
-      required this.isFavorite,
       required this.imageUrl});
 
   @override
@@ -167,13 +145,11 @@ class _$_Event implements _Event {
   @override
   final Location location;
   @override
-  final bool isFavorite;
-  @override
   final Uri imageUrl;
 
   @override
   String toString() {
-    return 'Event(name: $name, date: $date, location: $location, isFavorite: $isFavorite, imageUrl: $imageUrl)';
+    return 'Event(name: $name, date: $date, location: $location, imageUrl: $imageUrl)';
   }
 
   @override
@@ -185,15 +161,12 @@ class _$_Event implements _Event {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            (identical(other.isFavorite, isFavorite) ||
-                other.isFavorite == isFavorite) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, date, location, isFavorite, imageUrl);
+  int get hashCode => Object.hash(runtimeType, name, date, location, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -207,7 +180,6 @@ abstract class _Event implements Event {
       {required final String name,
       required final DateTime date,
       required final Location location,
-      required final bool isFavorite,
       required final Uri imageUrl}) = _$_Event;
 
   @override
@@ -216,8 +188,6 @@ abstract class _Event implements Event {
   DateTime get date;
   @override
   Location get location;
-  @override
-  bool get isFavorite;
   @override
   Uri get imageUrl;
   @override

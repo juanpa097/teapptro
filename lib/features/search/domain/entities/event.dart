@@ -9,7 +9,6 @@ class Event with _$Event {
     required String name,
     required DateTime date,
     required Location location,
-    required bool isFavorite,
     required Uri imageUrl,
   }) = _Event;
 }

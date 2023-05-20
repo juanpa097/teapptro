@@ -23,7 +23,6 @@ mixin _$EventModel {
   DateTime get date => throw _privateConstructorUsedError;
   @GeoPointToLocation()
   Location get location => throw _privateConstructorUsedError;
-  bool get isFavorite => throw _privateConstructorUsedError;
   @StringToUriConverter()
   Uri get imageUrl => throw _privateConstructorUsedError;
 
@@ -43,7 +42,6 @@ abstract class $EventModelCopyWith<$Res> {
       String name,
       @TimestampConverter() DateTime date,
       @GeoPointToLocation() Location location,
-      bool isFavorite,
       @StringToUriConverter() Uri imageUrl});
 
   $LocationCopyWith<$Res> get location;
@@ -66,7 +64,6 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
     Object? name = null,
     Object? date = null,
     Object? location = null,
-    Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
@@ -86,10 +83,6 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Location,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -119,7 +112,6 @@ abstract class _$$_EventModelCopyWith<$Res>
       String name,
       @TimestampConverter() DateTime date,
       @GeoPointToLocation() Location location,
-      bool isFavorite,
       @StringToUriConverter() Uri imageUrl});
 
   @override
@@ -141,7 +133,6 @@ class __$$_EventModelCopyWithImpl<$Res>
     Object? name = null,
     Object? date = null,
     Object? location = null,
-    Object? isFavorite = null,
     Object? imageUrl = null,
   }) {
     return _then(_$_EventModel(
@@ -161,10 +152,6 @@ class __$$_EventModelCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Location,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -181,7 +168,6 @@ class _$_EventModel extends _EventModel {
       required this.name,
       @TimestampConverter() required this.date,
       @GeoPointToLocation() required this.location,
-      required this.isFavorite,
       @StringToUriConverter() required this.imageUrl})
       : super._();
 
@@ -197,14 +183,12 @@ class _$_EventModel extends _EventModel {
   @GeoPointToLocation()
   final Location location;
   @override
-  final bool isFavorite;
-  @override
   @StringToUriConverter()
   final Uri imageUrl;
 
   @override
   String toString() {
-    return 'EventModel(id: $id, name: $name, date: $date, location: $location, isFavorite: $isFavorite, imageUrl: $imageUrl)';
+    return 'EventModel(id: $id, name: $name, date: $date, location: $location, imageUrl: $imageUrl)';
   }
 
   @override
@@ -217,15 +201,13 @@ class _$_EventModel extends _EventModel {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            (identical(other.isFavorite, isFavorite) ||
-                other.isFavorite == isFavorite) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, date, location, isFavorite, imageUrl);
+      Object.hash(runtimeType, id, name, date, location, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -240,7 +222,6 @@ abstract class _EventModel extends EventModel {
       required final String name,
       @TimestampConverter() required final DateTime date,
       @GeoPointToLocation() required final Location location,
-      required final bool isFavorite,
       @StringToUriConverter() required final Uri imageUrl}) = _$_EventModel;
   const _EventModel._() : super._();
 
@@ -255,8 +236,6 @@ abstract class _EventModel extends EventModel {
   @override
   @GeoPointToLocation()
   Location get location;
-  @override
-  bool get isFavorite;
   @override
   @StringToUriConverter()
   Uri get imageUrl;

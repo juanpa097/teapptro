@@ -26,7 +26,7 @@ class EventItemCardWidget extends StatelessWidget {
             children: [
               Image.network(event.imageUrl.toString()),
               Expanded(child: EventCardInfo(event: event)),
-              const EventCardActionItems(),
+              EventCardActionItems(event: event),
             ],
           ),
           onTap: () {
@@ -87,18 +87,18 @@ class EventCardInfo extends StatelessWidget {
 }
 
 class EventCardActionItems extends StatelessWidget {
-  const EventCardActionItems({super.key});
+  const EventCardActionItems({
+    super.key,
+    required this.event,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.favorite,
-                color: Theme.of(context).colorScheme.error)),
         IconButton(onPressed: () {}, icon: const Icon(Icons.share_outlined)),
       ],
     );
   }
+  final Event event;
 }

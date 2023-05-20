@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'sort_selector_widget.dart';
+import '../../../../common/presentation/spacing.dart';
 
 class EventSummaryWidget extends StatelessWidget {
   const EventSummaryWidget({
@@ -12,15 +12,17 @@ class EventSummaryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          '$numberOfEvents Events',
-          style: Theme.of(context).textTheme.subtitle2,
-        ),
-        const SortSelectorWidget(),
-      ],
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: Spacing.s20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            '$numberOfEvents Events',
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
+        ],
+      ),
     );
   }
 }
