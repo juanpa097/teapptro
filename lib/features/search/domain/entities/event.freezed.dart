@@ -19,9 +19,10 @@ mixin _$Event {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
-  Location get location => throw _privateConstructorUsedError;
   Uri get imageUrl => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get locationName => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
@@ -36,11 +37,10 @@ abstract class $EventCopyWith<$Res> {
       {String id,
       String name,
       DateTime date,
-      Location location,
       Uri imageUrl,
-      String description});
-
-  $LocationCopyWith<$Res> get location;
+      String description,
+      String locationName,
+      String address});
 }
 
 /// @nodoc
@@ -59,9 +59,10 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? id = null,
     Object? name = null,
     Object? date = null,
-    Object? location = null,
     Object? imageUrl = null,
     Object? description = null,
+    Object? locationName = null,
+    Object? address = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -76,10 +77,6 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as Location,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -88,15 +85,15 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      locationName: null == locationName
+          ? _value.locationName
+          : locationName // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res> get location {
-    return $LocationCopyWith<$Res>(_value.location, (value) {
-      return _then(_value.copyWith(location: value) as $Val);
-    });
   }
 }
 
@@ -110,12 +107,10 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       {String id,
       String name,
       DateTime date,
-      Location location,
       Uri imageUrl,
-      String description});
-
-  @override
-  $LocationCopyWith<$Res> get location;
+      String description,
+      String locationName,
+      String address});
 }
 
 /// @nodoc
@@ -130,9 +125,10 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
     Object? id = null,
     Object? name = null,
     Object? date = null,
-    Object? location = null,
     Object? imageUrl = null,
     Object? description = null,
+    Object? locationName = null,
+    Object? address = null,
   }) {
     return _then(_$_Event(
       id: null == id
@@ -147,10 +143,6 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as Location,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -158,6 +150,14 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      locationName: null == locationName
+          ? _value.locationName
+          : locationName // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -170,9 +170,10 @@ class _$_Event implements _Event {
       {required this.id,
       required this.name,
       required this.date,
-      required this.location,
       required this.imageUrl,
-      required this.description});
+      required this.description,
+      required this.locationName,
+      required this.address});
 
   @override
   final String id;
@@ -181,15 +182,17 @@ class _$_Event implements _Event {
   @override
   final DateTime date;
   @override
-  final Location location;
-  @override
   final Uri imageUrl;
   @override
   final String description;
+  @override
+  final String locationName;
+  @override
+  final String address;
 
   @override
   String toString() {
-    return 'Event(id: $id, name: $name, date: $date, location: $location, imageUrl: $imageUrl, description: $description)';
+    return 'Event(id: $id, name: $name, date: $date, imageUrl: $imageUrl, description: $description, locationName: $locationName, address: $address)';
   }
 
   @override
@@ -200,17 +203,18 @@ class _$_Event implements _Event {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.location, location) ||
-                other.location == location) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.locationName, locationName) ||
+                other.locationName == locationName) &&
+            (identical(other.address, address) || other.address == address));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, date, location, imageUrl, description);
+  int get hashCode => Object.hash(runtimeType, id, name, date, imageUrl,
+      description, locationName, address);
 
   @JsonKey(ignore: true)
   @override
@@ -224,9 +228,10 @@ abstract class _Event implements Event {
       {required final String id,
       required final String name,
       required final DateTime date,
-      required final Location location,
       required final Uri imageUrl,
-      required final String description}) = _$_Event;
+      required final String description,
+      required final String locationName,
+      required final String address}) = _$_Event;
 
   @override
   String get id;
@@ -235,11 +240,13 @@ abstract class _Event implements Event {
   @override
   DateTime get date;
   @override
-  Location get location;
-  @override
   Uri get imageUrl;
   @override
   String get description;
+  @override
+  String get locationName;
+  @override
+  String get address;
   @override
   @JsonKey(ignore: true)
   _$$_EventCopyWith<_$_Event> get copyWith =>

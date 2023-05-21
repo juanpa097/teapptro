@@ -9,8 +9,9 @@ class Event with _$Event {
     required String id,
     required String name,
     required DateTime date,
-    required Location location,
     required Uri imageUrl,
     required String description,
+    required String locationName,
+    required String address,
   }) = _Event;
 }

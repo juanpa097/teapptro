@@ -10,11 +10,11 @@ EventModel _$EventModelFromJson(Map<String, dynamic> json) => EventModel(
       id: json['id'] as String,
       name: json['name'] as String,
       date: const TimestampConverter().fromJson(json['date'] as Timestamp),
-      location:
-          const GeoPointToLocation().fromJson(json['location'] as GeoPoint),
       imageUrl:
           const StringToUriConverter().fromJson(json['image_url'] as String),
       description: json['description'] as String,
+      locationName: json['location_name'] as String,
+      address: json['address'] as String,
     );
 
 Map<String, dynamic> _$EventModelToJson(EventModel instance) =>
@@ -22,7 +22,8 @@ Map<String, dynamic> _$EventModelToJson(EventModel instance) =>
       'id': instance.id,
       'name': instance.name,
       'date': const TimestampConverter().toJson(instance.date),
-      'location': const GeoPointToLocation().toJson(instance.location),
       'image_url': const StringToUriConverter().toJson(instance.imageUrl),
       'description': instance.description,
+      'location_name': instance.locationName,
+      'address': instance.address,
     };

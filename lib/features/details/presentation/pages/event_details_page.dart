@@ -127,10 +127,10 @@ class EventInformationWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Palau Sant Jordi',
+                  Text(event.locationName,
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: Spacing.s8),
-                  Text('Passeig Olímpic, 5-7, 08038 Barcelona',
+                  Text(event.address,
                       style: Theme.of(context).textTheme.caption),
                   const SizedBox(height: Spacing.s8),
                   Text('View on maps',

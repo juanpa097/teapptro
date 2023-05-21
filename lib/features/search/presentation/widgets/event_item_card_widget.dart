@@ -77,7 +77,7 @@ class EventCardInfo extends StatelessWidget {
                 Icons.pin_drop_outlined,
                 color: Theme.of(context).textTheme.caption?.color,
               ),
-              Text('Razzmatazz', style: Theme.of(context).textTheme.caption),
+              Text(event.locationName, style: Theme.of(context).textTheme.caption),
             ],
           ),
         ],

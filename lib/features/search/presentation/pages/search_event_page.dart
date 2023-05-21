@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../common/presentation/build_context_extensions.dart';
 import '../../../../injection.dart';
 import '../../domain/entities/event_failure.dart';
 import '../bloc/events_watcher/events_watcher_bloc.dart';
@@ -44,7 +43,7 @@ class SearchEventPage extends StatelessWidget {
       );
 
   Widget _handleErrorState(BuildContext context, EventFailure failure) {
-    context.errorSnackBar(failure.e);
-    return SliverToBoxAdapter(child: Container());
+    debugPrintStack(stackTrace: failure.e?.stackTrace);
+    return SliverToBoxAdapter(child: Text(failure.e?.stackTrace.toString() ?? ''));
   }
 }
