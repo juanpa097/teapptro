@@ -1,9 +1,11 @@
 part of 'events_watcher_bloc.dart';
 
-@freezed
-class EventsWatcherEvent with _$EventsWatcherEvent {
-  const factory EventsWatcherEvent.watchAllStarted() = _WatchAllStarted;
+sealed class EventsWatcherEvent {}
 
-  const factory EventsWatcherEvent.eventsReceived(
-      Either<EventFailure, List<Event>> failureOrEvents) = _EventsReceived;
+class WatchAllStarted extends EventsWatcherEvent {}
+
+class EventsReceived extends EventsWatcherEvent {
+  EventsReceived(this.failureOrEvents);
+
+  Either<EventFailure, List<Event>> failureOrEvents;
 }

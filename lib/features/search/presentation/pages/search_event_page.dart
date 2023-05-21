@@ -15,21 +15,19 @@ class SearchEventPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (BuildContext context) => getIt<EventsWatcherBloc>()
-          ..add(
-            const EventsWatcherEvent.watchAllStarted(),
-          ),
+        create: (BuildContext context) =>
+            getIt<EventsWatcherBloc>()..add(WatchAllStarted()),
         child: BlocBuilder<EventsWatcherBloc, EventsWatcherState>(
           builder: (BuildContext context, EventsWatcherState state) {
             return CustomScrollView(
               slivers: [
                 const SearchSliverAppBarWidget(),
-                state.when(
-                  initial: () => _getSliverLoadingState(),
-                  loadInProgress: () => _getSliverLoadingState(),
-                  loadFailure: (failure) => _handleErrorState(context, failure),
-                  loadSuccess: (events) => EventsListSliver(events: events),
-                ),
+                switch (state) {
+                  Initial() => _getSliverLoadingState(),
+                  LoadInProgress() => _getSliverLoadingState(),
+                  LoadFailure() => _handleErrorState(context, state.failure),
+                  LoadSuccess() => EventsListSliver(events: state.events)
+                }
               ],
             );
           },
@@ -44,6 +42,7 @@ class SearchEventPage extends StatelessWidget {
 
   Widget _handleErrorState(BuildContext context, EventFailure failure) {
     debugPrintStack(stackTrace: failure.e?.stackTrace);
-    return SliverToBoxAdapter(child: Text(failure.e?.stackTrace.toString() ?? ''));
+    return SliverToBoxAdapter(
+        child: Text(failure.e?.stackTrace.toString() ?? ''));
   }
 }

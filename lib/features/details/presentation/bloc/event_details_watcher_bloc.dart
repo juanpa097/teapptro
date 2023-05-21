@@ -59,4 +59,10 @@ class EventDetailsWatcherBloc
         .watchEvent(eventFetched.eventId)
         .listen((failureOrEvent) => add(EventReceived(failureOrEvent)));
   }
+
+  @override
+  Future<void> close() async {
+    await _eventDetailsStreamSubscription?.cancel();
+    super.close();
+  }
 }

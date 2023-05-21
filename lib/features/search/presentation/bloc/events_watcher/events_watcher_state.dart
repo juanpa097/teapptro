@@ -1,11 +1,19 @@
 part of 'events_watcher_bloc.dart';
 
-@freezed
-class EventsWatcherState with _$EventsWatcherState {
-  const factory EventsWatcherState.initial() = _Initial;
-  const factory EventsWatcherState.loadInProgress() = _LoadInProgress;
-  const factory EventsWatcherState.loadSuccess(List<Event> events) =
-      _LoadSuccess;
-  const factory EventsWatcherState.loadFailure(EventFailure failure) =
-      _LoadFailure;
+sealed class EventsWatcherState {}
+
+class Initial extends EventsWatcherState {}
+
+class LoadInProgress extends EventsWatcherState {}
+
+class LoadSuccess extends EventsWatcherState {
+  LoadSuccess(this.events);
+
+  final List<Event> events;
+}
+
+class LoadFailure extends EventsWatcherState {
+  LoadFailure(this.failure);
+
+  final EventFailure failure;
 }
