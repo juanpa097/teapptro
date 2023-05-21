@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../common/presentation/spacing.dart';
 import '../../../../injection.dart';
 import '../../../search/domain/entities/event.dart';
+import '../../../search/domain/usecases/format_event_item_date.dart';
 import '../bloc/event_details_watcher_bloc.dart';
 
 class EventDetailsPage extends StatelessWidget {
@@ -75,9 +76,12 @@ class EventInformationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final FormatEventItemDate dateFormatter = getIt<FormatEventItemDate>();
+
     return Container(
       margin: const EdgeInsets.symmetric(
-          horizontal: Spacing.s16, vertical: Spacing.s20),
+          horizontal: Spacing.s16, vertical: Spacing.s20,),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -98,13 +102,10 @@ class EventInformationWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Mon, Apr 18 · 21:00 Pm',
+                  Text(dateFormatter(event.date),
                       style: Theme.of(context).textTheme.subtitle1),
                   const SizedBox(height: Spacing.s8),
-                  Text('21:00 Pm - 23.30 Pm',
-                      style: Theme.of(context).textTheme.caption),
-                  const SizedBox(height: Spacing.s8),
-                  Text('Add to calandar',
+                  Text('Add to calendar',
                       style: Theme.of(context).textTheme.caption?.copyWith(
                           color: Colors.blueAccent,
                           fontWeight: FontWeight.w700)),
