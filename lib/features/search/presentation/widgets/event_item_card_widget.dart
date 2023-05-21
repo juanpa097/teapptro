@@ -33,7 +33,7 @@ class EventItemCardWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => const EventDetailsPage(),
+                builder: (BuildContext context) => EventDetailsPage(eventId: event.id,),
               ),
             );
           },

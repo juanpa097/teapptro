@@ -1,6 +1,5 @@
 part of 'event_details_watcher_bloc.dart';
 
-@immutable
 sealed class EventDetailsWatcherState {}
 
 class Initial extends EventDetailsWatcherState {}

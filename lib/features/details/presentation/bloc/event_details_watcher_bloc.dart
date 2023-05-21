@@ -6,12 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../search/domain/entities/event.dart';
-import '../../search/domain/entities/event_failure.dart';
-import '../../search/domain/repositories/events_repository.dart';
+import '../../../search/domain/entities/event.dart';
+import '../../../search/domain/entities/event_failure.dart';
+import '../../../search/domain/repositories/events_repository.dart';
 
 part 'event_details_watcher_event.dart';
-
 part 'event_details_watcher_state.dart';
 
 @injectable

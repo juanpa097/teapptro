@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../common/presentation/spacing.dart';
+import '../../../../injection.dart';
+import '../../../search/domain/entities/event.dart';
+import '../bloc/event_details_watcher_bloc.dart';
 
 class EventDetailsPage extends StatelessWidget {
-  const EventDetailsPage({super.key});
+
+  const EventDetailsPage({super.key, required this.eventId});
+
+  final String eventId;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +39,29 @@ class EventDetailsPage extends StatelessWidget {
     );
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            topContent,
-            const EventInformationWidget(),
-          ],
+      body: BlocProvider(
+        create: (BuildContext context) => getIt<EventDetailsWatcherBloc>()
+          ..add(FetchEventById(eventId)),
+        child: SingleChildScrollView(
+          child: BlocBuilder<EventDetailsWatcherBloc, EventDetailsWatcherState>(
+            builder: (context, state) {
+              // if (state is LoadSuccess) {
+              //   debugPrint('${state.event}');
+              // }
+              return switch (state) {
+                Initial() => const Center(child: Text('Initial')),
+                LoadInProgress() => const Center(child: Text('Loading')),
+                LoadSuccess() => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      topContent,
+                      EventInformationWidget(event: state.event),
+                    ],
+                  ),
+                LoadFailure() => const Center(child: Text('Failure')),
+              };
+            },
+          ),
         ),
       ),
     );
@@ -45,7 +69,9 @@ class EventDetailsPage extends StatelessWidget {
 }
 
 class EventInformationWidget extends StatelessWidget {
-  const EventInformationWidget({super.key});
+  const EventInformationWidget({super.key, required this.event});
+
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +83,7 @@ class EventInformationWidget extends StatelessWidget {
         children: [
           Container(
               margin: const EdgeInsets.only(bottom: Spacing.s24),
-              child: Text('La Rosalia',
+              child: Text(event.name,
                   style: Theme.of(context).textTheme.headline5)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,7 +149,7 @@ class EventInformationWidget extends StatelessWidget {
                   child: Text('About',
                       style: Theme.of(context).textTheme.subtitle1)),
               Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  event.description,
                   style: Theme.of(context).textTheme.bodyText1),
             ],
           ),
