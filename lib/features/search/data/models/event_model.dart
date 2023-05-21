@@ -25,7 +25,8 @@ class EventModel with _$EventModel {
 
   factory EventModel.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> doc,
-  ) => _$EventModelFromJson(doc.dataWithId ?? {});
+  ) =>
+      _$EventModelFromJson(doc.dataWithId ?? {});
 
   const EventModel._();
 

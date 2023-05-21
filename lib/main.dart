@@ -24,22 +24,23 @@ class TeapptroApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Teapptro',
       theme: ThemeData.from(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0DCDAA)),
-          textTheme: baseTextTheme.copyWith(
-            headline3:
-                baseTextTheme.headline3?.copyWith(fontWeight: FontWeight.w700),
-            headline4:
-                baseTextTheme.headline4?.copyWith(fontWeight: FontWeight.w700),
-            headline5:
-                baseTextTheme.headline5?.copyWith(fontWeight: FontWeight.w600),
-            headline6:
-                baseTextTheme.headline6?.copyWith(fontWeight: FontWeight.w600),
-            subtitle1:
-                baseTextTheme.subtitle1?.copyWith(fontWeight: FontWeight.w700),
-            subtitle2:
-                baseTextTheme.subtitle2?.copyWith(fontWeight: FontWeight.w600),
-          ),
-          useMaterial3: false),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0DCDAA)),
+        textTheme: baseTextTheme.copyWith(
+          displaySmall:
+              baseTextTheme.displaySmall?.copyWith(fontWeight: FontWeight.w700),
+          headlineMedium: baseTextTheme.headlineMedium
+              ?.copyWith(fontWeight: FontWeight.w700),
+          headlineSmall: baseTextTheme.headlineSmall
+              ?.copyWith(fontWeight: FontWeight.w600),
+          titleLarge:
+              baseTextTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+          titleMedium:
+              baseTextTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+          titleSmall:
+              baseTextTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+        ),
+        useMaterial3: false,
+      ),
       home: const SearchEventPage(),
     );
   }

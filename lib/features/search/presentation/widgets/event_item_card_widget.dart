@@ -33,7 +33,9 @@ class EventItemCardWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => EventDetailsPage(eventId: event.id,),
+                builder: (BuildContext context) => EventDetailsPage(
+                  eventId: event.id,
+                ),
               ),
             );
           },
@@ -66,18 +68,19 @@ class EventCardInfo extends StatelessWidget {
             children: [
               Text(
                 dateFormatter(event.date),
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
-              Text(event.name, style: Theme.of(context).textTheme.subtitle1)
+              Text(event.name, style: Theme.of(context).textTheme.titleMedium)
             ],
           ),
           Row(
             children: [
               Icon(
                 Icons.pin_drop_outlined,
-                color: Theme.of(context).textTheme.caption?.color,
+                color: Theme.of(context).textTheme.bodySmall?.color,
               ),
-              Text(event.locationName, style: Theme.of(context).textTheme.caption),
+              Text(event.locationName,
+                  style: Theme.of(context).textTheme.bodySmall),
             ],
           ),
         ],
@@ -100,5 +103,6 @@ class EventCardActionItems extends StatelessWidget {
       ],
     );
   }
+
   final Event event;
 }

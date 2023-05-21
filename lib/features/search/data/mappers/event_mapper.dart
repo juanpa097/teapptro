@@ -11,9 +11,8 @@ List<Event> mapListEvent(
 ) =>
     snapshot.docs.map(mapEvent).toList();
 
-
 Event mapEvent(
-    DocumentSnapshot<Map<String, dynamic>> doc,
+  DocumentSnapshot<Map<String, dynamic>> doc,
 ) {
   debugPrint(doc.data().toString());
   return EventModel.fromFirestore(doc).toDomain();

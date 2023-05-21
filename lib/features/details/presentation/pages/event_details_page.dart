@@ -8,7 +8,6 @@ import '../../../search/domain/usecases/format_event_item_date.dart';
 import '../bloc/event_details_watcher_bloc.dart';
 
 class EventDetailsPage extends StatelessWidget {
-
   const EventDetailsPage({super.key, required this.eventId});
 
   final String eventId;
@@ -41,8 +40,8 @@ class EventDetailsPage extends StatelessWidget {
 
     return Scaffold(
       body: BlocProvider(
-        create: (BuildContext context) => getIt<EventDetailsWatcherBloc>()
-          ..add(FetchEventById(eventId)),
+        create: (BuildContext context) =>
+            getIt<EventDetailsWatcherBloc>()..add(FetchEventById(eventId)),
         child: SingleChildScrollView(
           child: BlocBuilder<EventDetailsWatcherBloc, EventDetailsWatcherState>(
             builder: (context, state) {
@@ -76,19 +75,20 @@ class EventInformationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final FormatEventItemDate dateFormatter = getIt<FormatEventItemDate>();
 
     return Container(
       margin: const EdgeInsets.symmetric(
-          horizontal: Spacing.s16, vertical: Spacing.s20,),
+        horizontal: Spacing.s16,
+        vertical: Spacing.s20,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
               margin: const EdgeInsets.only(bottom: Spacing.s24),
               child: Text(event.name,
-                  style: Theme.of(context).textTheme.headline5)),
+                  style: Theme.of(context).textTheme.headlineSmall)),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -96,17 +96,17 @@ class EventInformationWidget extends StatelessWidget {
                 margin: const EdgeInsets.only(right: Spacing.s8),
                 child: Icon(
                   Icons.calendar_month,
-                  color: Theme.of(context).textTheme.caption?.color,
+                  color: Theme.of(context).textTheme.bodySmall?.color,
                 ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(dateFormatter(event.date),
-                      style: Theme.of(context).textTheme.subtitle1),
+                      style: Theme.of(context).textTheme.titleMedium),
                   const SizedBox(height: Spacing.s8),
                   Text('Add to calendar',
-                      style: Theme.of(context).textTheme.caption?.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Colors.blueAccent,
                           fontWeight: FontWeight.w700)),
                 ],
@@ -121,20 +121,20 @@ class EventInformationWidget extends StatelessWidget {
                 margin: const EdgeInsets.only(right: Spacing.s8),
                 child: Icon(
                   Icons.pin_drop_outlined,
-                  color: Theme.of(context).textTheme.caption?.color,
+                  color: Theme.of(context).textTheme.bodySmall?.color,
                 ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(event.locationName,
-                      style: Theme.of(context).textTheme.subtitle1),
+                      style: Theme.of(context).textTheme.titleMedium),
                   const SizedBox(height: Spacing.s8),
                   Text(event.address,
-                      style: Theme.of(context).textTheme.caption),
+                      style: Theme.of(context).textTheme.bodySmall),
                   const SizedBox(height: Spacing.s8),
                   Text('View on maps',
-                      style: Theme.of(context).textTheme.caption?.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Colors.blueAccent,
                           fontWeight: FontWeight.w700)),
                 ],
@@ -148,10 +148,9 @@ class EventInformationWidget extends StatelessWidget {
               Container(
                   margin: const EdgeInsets.only(bottom: Spacing.s8),
                   child: Text('About',
-                      style: Theme.of(context).textTheme.subtitle1)),
-              Text(
-                  event.description,
-                  style: Theme.of(context).textTheme.bodyText1),
+                      style: Theme.of(context).textTheme.titleMedium)),
+              Text(event.description,
+                  style: Theme.of(context).textTheme.bodyLarge),
             ],
           ),
         ],

@@ -19,7 +19,7 @@ class EventSummaryWidget extends StatelessWidget {
         children: [
           Text(
             '$numberOfEvents Events',
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
         ],
       ),

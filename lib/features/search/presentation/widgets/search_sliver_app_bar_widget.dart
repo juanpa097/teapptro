@@ -24,7 +24,7 @@ class _SearchSliverAppBarState extends State<SearchSliverAppBarWidget> {
         title: Container(
           width: double.infinity,
           height: 40,
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.background,
           child: TextField(
             onChanged: (query) => eventsWatcherBloc.add(SearchForEvents(query)),
             decoration: const InputDecoration(
