@@ -5,5 +5,6 @@ import '../entities/event_failure.dart';
 
 abstract class EventsRepository {
   Stream<Either<EventFailure, List<Event>>> watchAll();
+  Stream<Either<EventFailure, List<Event>>> watchByName(String nameQuery);
   Stream<Either<EventFailure, Event>> watchEvent(String id);
 }

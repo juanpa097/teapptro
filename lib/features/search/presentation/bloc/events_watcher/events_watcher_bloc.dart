@@ -8,7 +8,6 @@ import '../../../domain/entities/event.dart';
 import '../../../domain/entities/event_failure.dart';
 import '../../../domain/repositories/events_repository.dart';
 
-// part 'events_watcher_bloc.freezed.dart';
 part 'events_watcher_event.dart';
 
 part 'events_watcher_state.dart';
@@ -31,6 +30,13 @@ class EventsWatcherBloc extends Bloc<EventsWatcherEvent, EventsWatcherState> {
     switch (event) {
       case WatchAllStarted _:
         await _handleWatchAllStarted(emit);
+
+      case final SearchForEvents searchEvent:
+        if (searchEvent.query.isEmpty) {
+          await _handleWatchAllStarted(emit);
+        } else {
+          await _handleSearchForEvents(searchEvent, emit);
+        }
 
       case final EventsReceived eventReceived:
         _handleEventsReceived(emit, eventReceived);
@@ -58,6 +64,19 @@ class EventsWatcherBloc extends Bloc<EventsWatcherEvent, EventsWatcherState> {
           (Either<EventFailure, List<Event>> failureOrEvents) =>
               add(EventsReceived(failureOrEvents)),
         );
+  }
+
+  Future<void> _handleSearchForEvents(
+    SearchForEvents searchEvent,
+    Emitter<EventsWatcherState> emit,
+  ) async {
+    emit(LoadInProgress());
+    await _eventsStreamSubscription?.cancel();
+    _eventsStreamSubscription =
+        _eventsRepository.watchByName(searchEvent.query).listen(
+              (Either<EventFailure, List<Event>> failureOrEvents) =>
+                  add(EventsReceived(failureOrEvents)),
+            );
   }
 
   @override

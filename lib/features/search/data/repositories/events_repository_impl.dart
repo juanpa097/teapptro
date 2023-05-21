@@ -35,4 +35,15 @@ class EventsRepositoryImpl extends EventsRepository {
         .asyncMap(right<EventFailure, Event>)
         .onErrorReturnWith(mapEventFailure);
   }
+
+  @override
+  Stream<Either<EventFailure, List<Event>>> watchByName(
+      String nameQuery) async* {
+    final eventsDoc = _firestore.getEventsByName(nameQuery);
+    yield* eventsDoc
+        .snapshots()
+        .asyncMap(mapListEvent)
+        .asyncMap(right<EventFailure, List<Event>>)
+        .onErrorReturnWith(mapEventFailure);
+  }
 }
